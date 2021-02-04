@@ -1,4 +1,5 @@
 
+import React, { Component } from 'react';
 import './App.css';
 import movieData from '../movieData';
 import Movies from './Movies';
