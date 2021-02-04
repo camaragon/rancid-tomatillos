@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import './App.css';
+import '../scss/index.scss';
 import movieData from '../movieData';
 import Movies from './Movies';
 

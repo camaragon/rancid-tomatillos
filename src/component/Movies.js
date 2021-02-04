@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Movies.css'
+import '../scss/index.scss'
 import Poster from './Poster';
 
 const Movies = ({movies}) => {
