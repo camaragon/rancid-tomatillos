@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import '../scss/index.scss';
 import movieData from '../movieData';
 import Movies from './Movies';
+import MovieInfo from './MovieInfo';
 
 class App extends Component {
   constructor() {
@@ -24,6 +25,7 @@ class App extends Component {
         <header>
           <h1>Rancid Tomatillos</h1>
         </header>
+        {this.selectedMovie !== "" ?  <MovieInfo selectedMovie={this.state.selectedMovie}/> : <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>}
         <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>
       </main>
     );
