@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import '../scss/index.scss';
 
-const MovieInfo = () => {
+const MovieInfo = ({selectedMovie}) => {
     
+    return (
+        <div className='selected-movie-display'>
+            <h2>{selectedMovie.title}</h2>
+        </div>
+    )
 }
-default export MovieInfo;
+export default MovieInfo;
