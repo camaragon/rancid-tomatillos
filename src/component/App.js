@@ -16,14 +16,14 @@ class App extends Component {
     const selectedMovie = this.state.movies.find(movie => movie.id === id)
     this.setState({movies: selectedMovie})
   }
-  
+
   render() {
     return (
       <main>
         <header>
           <h1>Rancid Tomatillos</h1>
         </header>
-        <Movies movies={this.state.movies}/>
+        <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>
       </main>
     );
   }
