@@ -25,8 +25,7 @@ class App extends Component {
         <header>
           <h1>Rancid Tomatillos</h1>
         </header>
-        <MovieInfo selectedMovie={this.state.selectedMovie}/>
-        {this.state.selectedMovie && <h2>{this.state.selecteMovie}</h2>}
+        {this.state.selectedMovie && <MovieInfo selectedMovie={this.state.selectedMovie}/>}
         <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>
       </main>
     );
