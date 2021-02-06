@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import '../scss/index.scss';
-import movieData from '../movieData';
 import Movies from './Movies';
 import MovieInfo from './MovieInfo';
 
@@ -31,14 +30,14 @@ class App extends Component {
     });
   }
 
-  handleChange = () => {
+  handleClick = () => {
     this.setState({selectedMovie: ""})
   }
 
   selectMovie = (id) => {   
     this.setState({isLoading: true})
     
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movi/${id}`)
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
     .then(response => response.json())
     .then(data => {
       console.log(data.movie);
@@ -58,7 +57,7 @@ class App extends Component {
         {this.state.movieError && <h2>Uh oh... We can't find that movie info!</h2>}
         {this.state.allMoviesError && <h2>Uh oh! Looks like we can't find the movies!</h2>}
         {this.state.isFetching && <h2>The movies are on their way!</h2>}
-        {this.state.selectedMovie && <MovieInfo isLoading={this.state.isLoading} selectedMovie={this.state.selectedMovie} handleChange={this.handleChange}/>}
+        {this.state.selectedMovie && <MovieInfo isLoading={this.state.isLoading} selectedMovie={this.state.selectedMovie} handleClick={this.handleClick}/>}
         {!this.state.selectedMovie && <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>}
       </main>
     );
