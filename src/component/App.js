@@ -11,20 +11,22 @@ class App extends Component {
     this.state = {
       movies: [],
       selectedMovie: "",
-      isLoading: false
+      isFetching: false, 
+      isLoading: false,
+      error: null
     } 
   }
 
   componentDidMount = () => {
-    this.setState({isLoading: true})
+    this.setState({isFetching: true})
 
     fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
     .then(response => response.json())
     .then(data => {
       console.log(data.movies);
-      this.setState({movies: data.movies, isLoading: false})
+      this.setState({movies: data.movies, isFetching: false})
     }).catch(error => {
-      this.setState({isLoading: false})
+      this.setState({isFetching: false})
     });
   }
 
@@ -32,14 +34,17 @@ class App extends Component {
     this.setState({selectedMovie: ""})
   }
 
-  selectMovie = (id) => {    
+  selectMovie = (id) => {   
+    this.setState({isLoading: true})
+    
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
     .then(response => response.json())
     .then(data => {
       console.log(data.movie);
-      this.setState({selectedMovie: data.movie})
+      this.setState({selectedMovie: data.movie, isLoading: false})
     }).catch(error => {
       console.log(error);
+      this.setState({isLoading: false, error: error})
     });
   }
 
@@ -49,8 +54,8 @@ class App extends Component {
         <header>
           <h1>Rancid Tomatillos</h1>
         </header>
-        {this.state.isLoading && <h2>The movies are on their way!</h2>}
-        {this.state.selectedMovie && <MovieInfo selectedMovie={this.state.selectedMovie} handleChange={this.handleChange}/>}
+        {this.state.isFetching && <h2>The movies are on their way!</h2>}
+        {this.state.selectedMovie && <MovieInfo isLoading={this.state.isLoading} selectedMovie={this.state.selectedMovie} handleChange={this.handleChange}/>}
         {!this.state.selectedMovie && <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>}
       </main>
     );

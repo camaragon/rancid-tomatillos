@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import '../scss/index.scss';
 import '../scss/MovieInfo.scss';
 
-const MovieInfo = ({selectedMovie, handleChange}) => {
+const MovieInfo = ({selectedMovie, handleChange, isLoading}) => {
     
     return (
         <section className='selected-movie-display'>
             <button className="button-lobby" onClick={handleChange}>Back to Lobby</button>
             <div className='movie-info-container'>
+                {isLoading && <h2>Movie info is loading...</h2>}
               <h2 className='selected-movie-title'>{selectedMovie.title}</h2>
               <img className='selected-movie-poster' src={selectedMovie.poster_path}></img>
               <p className='selected-movie-overview'>{selectedMovie.overview}</p>
