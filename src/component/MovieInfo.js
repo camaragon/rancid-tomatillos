@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import '../scss/index.scss';
 import '../scss/MovieInfo.scss';
 
-const MovieInfo = ({selectedMovie}) => {
+const MovieInfo = ({selectedMovie, handleChange}) => {
     const genreNames = selectedMovie.genres.map(genre => genre.name)
+    
     return (
         <section className='selected-movie-display'>
-            <button className="button-lobby">Back to Lobby</button>
+            <button className="button-lobby" onClick={handleChange}>Back to Lobby</button>
             <div className='movie-info-container'>
               <h2 className='selected-movie-title'>{selectedMovie.title}</h2>
               <img className='selected-movie-poster' src={selectedMovie.poster_path}></img>

@@ -13,6 +13,9 @@ class App extends Component {
       selectedMovie: ""
     } 
   }
+  handleChange = () => {
+    this.setState({selectedMovie: ""})
+  }
 
   selectMovie = (id) => {
     const selectedMovie = this.state.movies.find(movie => movie.id === id)
@@ -25,7 +28,7 @@ class App extends Component {
         <header>
           <h1>Rancid Tomatillos</h1>
         </header>
-        {this.state.selectedMovie && <MovieInfo selectedMovie={this.state.selectedMovie}/>}
+        {this.state.selectedMovie && <MovieInfo selectedMovie={this.state.selectedMovie} handleChange={this.handleChange}/>}
         {!this.state.selectedMovie && <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>}
       </main>
     );
