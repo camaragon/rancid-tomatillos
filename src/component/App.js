@@ -24,7 +24,6 @@ class App extends Component {
       <main>
         <header>
           <h1>Rancid Tomatillos</h1>
-          <button className="button-lobby">Back to Lobby</button>  
         </header>
         {this.state.selectedMovie && <MovieInfo selectedMovie={this.state.selectedMovie}/>}
         {!this.state.selectedMovie && <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>}
