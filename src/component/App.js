@@ -32,9 +32,7 @@ class App extends Component {
     this.setState({selectedMovie: ""})
   }
 
-  selectMovie = (id) => {
-    // const selectedMovie = this.state.movies.find(movie => movie.id === id)
-    
+  selectMovie = (id) => {    
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
     .then(response => response.json())
     .then(data => {
@@ -42,10 +40,7 @@ class App extends Component {
       this.setState({selectedMovie: data.movie})
     }).catch(error => {
       console.log(error);
-      // this.setState({isLoading: false})
     });
-
-    // this.setState({selectedMovie: selectedMovie})
   }
 
   render() {
