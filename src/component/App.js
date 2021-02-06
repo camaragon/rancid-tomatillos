@@ -21,7 +21,7 @@ class App extends Component {
     fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      console.log(data.movies);
       this.setState({movies: data.movies, isLoading: false})
     }).catch(error => {
       this.setState({isLoading: false})
@@ -33,8 +33,19 @@ class App extends Component {
   }
 
   selectMovie = (id) => {
-    const selectedMovie = this.state.movies.find(movie => movie.id === id)
-    this.setState({selectedMovie: selectedMovie})
+    // const selectedMovie = this.state.movies.find(movie => movie.id === id)
+    
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.movie);
+      this.setState({selectedMovie: data.movie})
+    }).catch(error => {
+      console.log(error);
+      // this.setState({isLoading: false})
+    });
+
+    // this.setState({selectedMovie: selectedMovie})
   }
 
   render() {
@@ -43,6 +54,7 @@ class App extends Component {
         <header>
           <h1>Rancid Tomatillos</h1>
         </header>
+        {this.state.isLoading && <h2>The movies are on their way!</h2>}
         {this.state.selectedMovie && <MovieInfo selectedMovie={this.state.selectedMovie} handleChange={this.handleChange}/>}
         {!this.state.selectedMovie && <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>}
       </main>

@@ -3,7 +3,7 @@ import '../scss/index.scss';
 import '../scss/MovieInfo.scss';
 
 const MovieInfo = ({selectedMovie, handleChange}) => {
-    const genreNames = selectedMovie.genres.map(genre => genre.name)
+    // const genreNames = selectedMovie.genres.map(genre => genre.name)
     
     return (
         <section className='selected-movie-display'>
@@ -17,7 +17,7 @@ const MovieInfo = ({selectedMovie, handleChange}) => {
               <p className='selected-movie-revenue'>{selectedMovie.revenue}</p>
               <p className='selected-movie-runtime'>{selectedMovie.runtime}</p>
               <p className='selected-movie-tagline'>{selectedMovie.tagline}</p>
-              <p className='selected-movie-genres'>{genreNames}</p>
+              {/* <p className='selected-movie-genres'>{genreNames}</p> */}
             </div>  
         </section>
     )
