@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import '../scss/index.scss';
-import movieData from '../movieData';
 import Movies from './Movies';
 import MovieInfo from './MovieInfo';
 
@@ -9,26 +8,56 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      movies: movieData.movies,
-      selectedMovie: ""
+      movies: [],
+      selectedMovie: "",
+      isFetching: false, 
+      isLoading: false,
+      allMoviesError: null,
+      movieError: null
     } 
   }
-  handleChange = () => {
+
+  componentDidMount = () => {
+    this.setState({isFetching: true})
+
+    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.movies);
+      this.setState({movies: data.movies, isFetching: false})
+    }).catch(error => {
+      this.setState({isFetching: false, allMoviesError: error})
+    });
+  }
+
+  handleClick = () => {
     this.setState({selectedMovie: ""})
   }
 
-  selectMovie = (id) => {
-    const selectedMovie = this.state.movies.find(movie => movie.id === id)
-    this.setState({selectedMovie: selectedMovie})
+  selectMovie = (id) => {   
+    this.setState({isLoading: true})
+    
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.movie);
+      this.setState({selectedMovie: data.movie, isLoading: false})
+    }).catch(error => {
+      this.setState({isLoading: false, movieError: error})
+    });
   }
 
   render() {
     return (
       <main>
         <header>
-          <h1>Rancid Tomatillos</h1>
+          <h1 className='header-title'>Rancid Tomatillos</h1>
         </header>
-        {this.state.selectedMovie && <MovieInfo selectedMovie={this.state.selectedMovie} handleChange={this.handleChange}/>}
+        {this.state.movieError && <h2 className='error-text'>Uh oh... We can't find that movie info!</h2>}
+        {this.state.allMoviesError && <h2 className='error-text'>Uh oh! Looks like we can't find the movies!</h2>}
+        {this.state.isLoading && <h2>Movie info is loading...</h2>}
+        {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>}
+        {this.state.selectedMovie && <MovieInfo isLoading={this.state.isLoading} selectedMovie={this.state.selectedMovie} handleClick={this.handleClick}/>}
         {!this.state.selectedMovie && <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>}
       </main>
     );
