@@ -43,7 +43,6 @@ class App extends Component {
       console.log(data.movie);
       this.setState({selectedMovie: data.movie, isLoading: false})
     }).catch(error => {
-      console.log(error);
       this.setState({isLoading: false, movieError: error})
     });
   }
@@ -52,11 +51,12 @@ class App extends Component {
     return (
       <main>
         <header>
-          <h1>Rancid Tomatillos</h1>
+          <h1 className='header-title'>Rancid Tomatillos</h1>
         </header>
-        {this.state.movieError && <h2>Uh oh... We can't find that movie info!</h2>}
-        {this.state.allMoviesError && <h2>Uh oh! Looks like we can't find the movies!</h2>}
-        {this.state.isFetching && <h2>The movies are on their way!</h2>}
+        {this.state.movieError && <h2 className='error-text'>Uh oh... We can't find that movie info!</h2>}
+        {this.state.allMoviesError && <h2 className='error-text'>Uh oh! Looks like we can't find the movies!</h2>}
+        {this.state.isLoading && <h2>Movie info is loading...</h2>}
+        {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>}
         {this.state.selectedMovie && <MovieInfo isLoading={this.state.isLoading} selectedMovie={this.state.selectedMovie} handleClick={this.handleClick}/>}
         {!this.state.selectedMovie && <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>}
       </main>
