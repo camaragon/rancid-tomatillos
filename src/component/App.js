@@ -9,10 +9,25 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      movies: movieData.movies,
-      selectedMovie: ""
+      movies: [],
+      selectedMovie: "",
+      isLoading: false
     } 
   }
+
+  componentDidMount = () => {
+    this.setState({isLoading: true})
+
+    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      this.setState({movies: data.movies, isLoading: false})
+    }).catch(error => {
+      this.setState({isLoading: false})
+    });
+  }
+
   handleChange = () => {
     this.setState({selectedMovie: ""})
   }
