@@ -1,3 +1,25 @@
+.movie-info-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5vh;
+}
+.movie-info-container-inner {
+    display: flex;
+    flex-direction: column;
+    margin: 2vh;
+}
+.selected-movie-display {
+    display: flex;
+    flex-direction: column;
+}
 .selected-movie-poster {
     height: 27em;
+    margin: 2vh;
+}
+.selected-movie-title {
+    color: red;
 }
