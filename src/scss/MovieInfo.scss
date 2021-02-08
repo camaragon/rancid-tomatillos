@@ -15,8 +15,8 @@
 }
 .movie-info-container {
     background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 4px 4px 12px 0 rgba(176, 170, 170, 0.8),
-    -6px -6px 16px 0 rgba(63, 61, 61, 0.55);
+    box-shadow: 4px 4px 12px 0 rgba(140, 136, 136, 0.8),
+    -6px -6px 16px 0 rgba(57, 55, 55, 0.55);
     border-radius: 6px;
     color: white;
     display: flex;
@@ -36,6 +36,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 .selected-movie-poster {
     height: 27em;
@@ -83,5 +87,5 @@
     margin-top: 2vh;
     padding: 2vh;
     box-shadow: 4px 4px 12px 0 rgba(30, 29, 29, 0.8),
-        -6px -6px 16px 0 rgba(81, 79, 79, 0.55)
+        -6px -6px 16px 0 rgba(70, 69, 69, 0.55)
 }

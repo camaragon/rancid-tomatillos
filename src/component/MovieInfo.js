@@ -14,12 +14,7 @@ const MovieInfo = ({selectedMovie, handleClick}) => {
 
     }
     return (
-        <section className='selected-movie-display' style={{
-            backgroundImage: `url(${selectedMovie.backdrop_path})`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat'
-            }}>
+        <section className='selected-movie-display' style={{backgroundImage: `url(${selectedMovie.backdrop_path})`}}>
             <div className='movie-info-container'>
               <img className='selected-movie-poster' src={selectedMovie.poster_path} alt={`Movie poster of ${selectedMovie.title}`} ></img>
               <div className='movie-info-container-inner'>
