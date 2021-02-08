@@ -1,25 +1,63 @@
-.movie-info-container {
-    background-color: rgba(0, 0, 0, 0.7);
+.button-lobby {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    padding: 0.7em;
+    margin: 1em;
+    background-color: black;
     color: white;
-    display: flex;;
+    font-size: 1em;
+}
+.movie-info-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 6px;
+    color: white;
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: 5vh;
+    padding: 2vh;
 }
 .movie-info-container-inner {
     display: flex;
     flex-direction: column;
     margin: 2vh;
+    padding: 1vh;
 }
 .selected-movie-display {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .selected-movie-poster {
     height: 27em;
     margin: 2vh;
+    border: solid white 5px;
+    border-radius: 6px;
+}
+.selected-movie-rating {
+    margin: 0;
+}
+.selected-movie-date {
+    margin: 0;
+    margin-bottom: 2vh;
 }
 .selected-movie-title {
     color: red;
+    display: flex;
+    justify-content: center;
+    font-size: 3em;
+    margin: 0;
+    margin-bottom: 2vh;
+}
+
+.summary-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    color: white;
+    margin: 1vh;
+    padding: 2vh;
 }
