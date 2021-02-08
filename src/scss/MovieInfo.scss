@@ -1,10 +1,16 @@
+$primary-background: #050505;
+$primary-font-color: #ffffff;
+$secondary-font-color: #cccccc;
+$darker-font-color: darken($secondary-font-color, 20%);
+$title-font: #FF0000;
+
 @mixin black-box-shadow-transparent() {
   box-shadow: 4px 4px 12px 0 rgba(140, 136, 136, 0.8),
     -6px -6px 16px 0 rgba(57, 55, 55, 0.55);
   border-radius: 6px;
 }
 @mixin black-box-shadow() {
-    background-color: black;
+    background-color: $primary-background;
     box-shadow: 4px 4px 12px 0 rgba(0, 0, 0, 0.8),
       -6px -6px 16px 0 rgba(36, 36, 36, 0.55);
     border-radius: 6px;
@@ -21,7 +27,7 @@
 .button-lobby {
     @include black-box-shadow;
     @include flex-row-center;
-    color: white;
+    color: $primary-font-color;
     justify-content: center;
     width: 20%;
     padding: 0.7em;
@@ -34,16 +40,17 @@
     padding: 2vh;
 }
 .movie-info-container-inner {
+    @include black-box-shadow-transparent;
     @include flex-column;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 6px;
     margin: 2vh;
-    padding: 1.5vh;
+    padding: 2vh;
 }
 .selected-movie-display {
     @include flex-column;
     background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+    color: $primary-font-color;
     align-items: center;
     background-position: center;
     background-size: cover;
@@ -53,7 +60,7 @@
 .selected-movie-poster {
     height: 27em;
     margin: 2vh;
-    border: solid white 5px;
+    border: solid $primary-font-color 5px;
     border-radius: 6px;
     box-shadow: 4px 4px 12px 0 rgba(0, 0, 0, 0.8),
         -6px -6px 16px 0 rgba(135, 134, 134, 0.55)
@@ -74,10 +81,10 @@
 .selected-movie-tagline {
     font-style: italic;
     font-size: 1.2em;
-    color: rgb(186, 184, 184);
+    color: $darker-font-color;
 }
 .selected-movie-title {
-    color: red;
+    color: $title-font;
     text-shadow: 2px 2px 1px #3f3a3a;
     display: flex;
     font-size: 3.5em;
@@ -86,7 +93,7 @@
 
 .summary-container {
     @include black-box-shadow;
-    color: rgb(213, 209, 209);
+    color: $secondary-font-color;
     margin: 0.5vh;
     margin-top: 2vh;
     padding: 2vh;
