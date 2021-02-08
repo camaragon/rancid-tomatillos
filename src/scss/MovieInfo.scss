@@ -10,9 +10,13 @@
     background-color: black;
     color: white;
     font-size: 1em;
+    box-shadow: 4px 4px 12px 0 rgba(0, 0, 0, 0.8),
+    -6px -6px 16px 0 rgba(36, 36, 36, 0.55)
 }
 .movie-info-container {
     background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 4px 4px 12px 0 rgba(176, 170, 170, 0.8),
+    -6px -6px 16px 0 rgba(63, 61, 61, 0.55);
     border-radius: 6px;
     color: white;
     display: flex;
@@ -22,6 +26,7 @@
     padding: 2vh;
 }
 .movie-info-container-inner {
+    border-radius: 6px;
     display: flex;
     flex-direction: column;
     margin: 2vh;
@@ -37,27 +42,46 @@
     margin: 2vh;
     border: solid white 5px;
     border-radius: 6px;
+    box-shadow: 4px 4px 12px 0 rgba(0, 0, 0, 0.8),
+        -6px -6px 16px 0 rgba(135, 134, 134, 0.55)
 }
 .selected-movie-rating {
+    font-size: 1em;
     margin: 0;
 }
 .selected-movie-date {
+    font-size: 1em;
     margin: 0;
     margin-bottom: 2vh;
+}
+.selected-movie-header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1em;
+}
+.selected-movie-genres {
+}
+.selected-movie-tagline {
+    font-style: italic;
+    font-size: 1em;
+    color: gray;
 }
 .selected-movie-title {
     color: red;
+    text-shadow: 2px 2px 1px #3f3a3a;
     display: flex;
-    justify-content: center;
-    font-size: 3em;
+    font-size: 3.5em;
     margin: 0;
-    margin-bottom: 2vh;
 }
 
 .summary-container {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 6px;
-    color: white;
-    margin: 1vh;
+    color: rgb(213, 209, 209);
+    margin: 0.5vh;
+    margin-top: 2vh;
     padding: 2vh;
+    box-shadow: 4px 4px 12px 0 rgba(30, 29, 29, 0.8),
+        -6px -6px 16px 0 rgba(81, 79, 79, 0.55)
 }
