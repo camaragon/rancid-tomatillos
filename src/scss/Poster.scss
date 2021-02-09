@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 .poster-wrapper {
     display: flex;
     flex-direction: column;
@@ -5,7 +7,7 @@
     background: black;
     border-radius: 20px;
     transition: 300ms ease;
-    // border: solid 2px black;
+    @include black-box-shadow-transparent;
 
     &:hover {
         transform: scale(1.08);

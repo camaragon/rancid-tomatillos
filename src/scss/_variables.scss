@@ -1,0 +1,26 @@
+$primary-background: #050505;
+$primary-font-color: #ffffff;
+$secondary-font-color: #cccccc;
+$darker-font-color: darken($secondary-font-color, 20%);
+$title-font: #FF0000;
+
+@mixin black-box-shadow-transparent() {
+  box-shadow: 4px 4px 12px 0 rgba(140, 136, 136, 0.8),
+    -6px -6px 16px 0 rgba(57, 55, 55, 0.55);
+  border-radius: 6px;
+}
+@mixin black-box-shadow() {
+    background-color: $primary-background;
+    box-shadow: 4px 4px 12px 0 rgba(0, 0, 0, 0.8),
+      -6px -6px 16px 0 rgba(36, 36, 36, 0.55);
+    border-radius: 6px;
+}
+@mixin flex-column() {
+    display: flex;
+    flex-direction: column;
+}
+@mixin flex-row-center() {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
