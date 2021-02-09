@@ -60,7 +60,18 @@ class App extends Component {
         {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>}
         {this.state.selectedMovie && <MovieInfo isLoading={this.state.isLoading} selectedMovie={this.state.selectedMovie} handleClick={this.handleClick}/>}
         {!this.state.selectedMovie && <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>} */}
-        <Route path='/' render={ () => <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>} />
+        <Route exact path='/' render={ () => <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>} />
+        <Route exact path='/:id' render={({ match }) => {
+          const currentMovie = this.state.movies.find(movie => movie.id === parseInt(match.params.id));
+
+          if (!currentMovie) {
+            return (<h2>Uh oh... we can't find that movie!</h2>);
+          }
+          console.log(currentMovie)
+          this.selectMovie(currentMovie.id);
+          return <MovieInfo match={match} selectedMovie={this.state.selectedMovie} />
+        }} 
+        />
 
       </main>
     );

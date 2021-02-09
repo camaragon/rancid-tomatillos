@@ -1,10 +1,11 @@
 import React from 'react';
 import '../scss/index.scss';
+import { Link } from 'react-router-dom';
 
 const Poster = ({title, rating, posterImage, id, selectMovie}) => {
     return (
         <div className='poster-wrapper'>
-            <img onClick={() => selectMovie(id)} className='poster-image' id={id} src={posterImage} alt={`Movie poster of ${title}`}></img>
+            <Link to={`/${id}`}> <img className='poster-image' id={id} src={posterImage} alt={`Movie poster of ${title}`}></img></Link> 
             <h2 className='poster-title'>{title}</h2>
             <p className='poster-rating'>{`Average Rating: ${rating}`}</p>
         </div>
