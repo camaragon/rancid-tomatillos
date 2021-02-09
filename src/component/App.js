@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import '../scss/index.scss';
 import Movies from './Movies';
 import MovieInfo from './MovieInfo';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -53,12 +54,14 @@ class App extends Component {
         <header>
           <h1 className='header-title'>Rancid Tomatillos</h1>
         </header>
-        {this.state.movieError && <h2 className='error-text'>Uh oh... We can't find that movie info!</h2>}
+        {/* {this.state.movieError && <h2 className='error-text'>Uh oh... We can't find that movie info!</h2>}
         {this.state.allMoviesError && <h2 className='error-text'>Uh oh! Looks like we can't find the movies!</h2>}
         {this.state.isLoading && <h2>Movie info is loading...</h2>}
         {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>}
         {this.state.selectedMovie && <MovieInfo isLoading={this.state.isLoading} selectedMovie={this.state.selectedMovie} handleClick={this.handleClick}/>}
-        {!this.state.selectedMovie && <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>}
+        {!this.state.selectedMovie && <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>} */}
+        <Route path='/' render={ () => <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>} />
+
       </main>
     );
   }
