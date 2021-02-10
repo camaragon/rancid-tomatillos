@@ -13,6 +13,21 @@ const MovieInfo = ({selectedMovie, handleClick}) => {
     const spaceOutGenres = {
 
     }
+
+    // findMovie = (id) => {   
+    //   // this.setState({isLoading: true})
+      
+    //   fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log(data.movie);
+    //     // this.setState({selectedMovie: data.movie, isLoading: false})
+    //     return data.movie;
+    //   }).catch(error => {
+    //     // this.setState({isLoading: false, movieError: error})
+    //   });
+    // }
+
     return (
         <section className='selected-movie-display' style={{backgroundImage: `url(${selectedMovie.backdrop_path})`}}>
             <div className='movie-info-container'>

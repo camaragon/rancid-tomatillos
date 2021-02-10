@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   selectMovie = (id) => {   
-    this.setState({isLoading: true})
+    // this.setState({isLoading: true})
     
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
     .then(response => response.json())
@@ -44,7 +44,7 @@ class App extends Component {
       console.log(data.movie);
       this.setState({selectedMovie: data.movie, isLoading: false})
     }).catch(error => {
-      this.setState({isLoading: false, movieError: error})
+      // this.setState({isLoading: false, movieError: error})
     });
   }
 
@@ -62,13 +62,14 @@ class App extends Component {
         {!this.state.selectedMovie && <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>} */}
         <Route exact path='/' render={ () => <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>} />
         <Route exact path='/:id' render={({ match }) => {
+          // debugger
           const currentMovie = this.state.movies.find(movie => movie.id === parseInt(match.params.id));
-
+          console.log(currentMovie)
           if (!currentMovie) {
             return (<h2>Uh oh... we can't find that movie!</h2>);
           }
-          console.log(currentMovie)
           this.selectMovie(currentMovie.id);
+          console.log(this.state.selectedMovie)
           return <MovieInfo match={match} selectedMovie={this.state.selectedMovie} />
         }} 
         />
