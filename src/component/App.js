@@ -44,7 +44,7 @@ class App extends Component {
       console.log(data.movie);
       this.setState({selectedMovie: data.movie, isLoading: false})
     }).catch(error => {
-      // this.setState({isLoading: false, movieError: error})
+      this.setState({isLoading: false, movieError: error})
     });
   }
 
@@ -57,19 +57,14 @@ class App extends Component {
         {/* {this.state.movieError && <h2 className='error-text'>Uh oh... We can't find that movie info!</h2>}
         {this.state.allMoviesError && <h2 className='error-text'>Uh oh! Looks like we can't find the movies!</h2>}
         {this.state.isLoading && <h2>Movie info is loading...</h2>}
-        {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>}
-        {this.state.selectedMovie && <MovieInfo isLoading={this.state.isLoading} selectedMovie={this.state.selectedMovie} handleClick={this.handleClick}/>}
-        {!this.state.selectedMovie && <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>} */}
+        {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>} */}
         <Route exact path='/' render={ () => <Movies movies={this.state.movies} selectMovie={this.selectMovie}/>} />
         <Route exact path='/:id' render={({ match }) => {
-          // debugger
           const currentMovie = this.state.movies.find(movie => movie.id === parseInt(match.params.id));
-          console.log(currentMovie)
           if (!currentMovie) {
             return (<h2>Uh oh... we can't find that movie!</h2>);
           }
           this.selectMovie(currentMovie.id);
-          console.log(this.state.selectedMovie)
           return <MovieInfo match={match} selectedMovie={this.state.selectedMovie} />
         }} 
         />
