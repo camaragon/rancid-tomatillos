@@ -1,6 +1,7 @@
 import React from 'react';
 import '../scss/index.scss';
 import '../scss/MovieInfo.scss';
+import { Link } from 'react-router-dom';
 
 const MovieInfo = ({selectedMovie, handleClick}) => {
     const roundedRating = {}
@@ -13,20 +14,6 @@ const MovieInfo = ({selectedMovie, handleClick}) => {
     const spaceOutGenres = {
 
     }
-
-    // findMovie = (id) => {   
-    //   // this.setState({isLoading: true})
-      
-    //   fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data.movie);
-    //     // this.setState({selectedMovie: data.movie, isLoading: false})
-    //     return data.movie;
-    //   }).catch(error => {
-    //     // this.setState({isLoading: false, movieError: error})
-    //   });
-    // }
 
     return (
         <section className='selected-movie-display' style={{backgroundImage: `url(${selectedMovie.backdrop_path})`}}>
@@ -47,7 +34,7 @@ const MovieInfo = ({selectedMovie, handleClick}) => {
                 <p className='selected-movie-runtime'>Runtime {selectedMovie.runtime} min</p>
               </div>
             </div>  
-            <button className='button-lobby' onClick={handleClick}>Back to Lobby</button>
+            <Link to='/'><button className='button-lobby' >Back to Lobby</button></Link>
         </section>
     )
 }
