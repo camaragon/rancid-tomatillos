@@ -2,7 +2,7 @@ import React from 'react';
 import '../scss/index.scss'
 import Poster from './Poster';
 
-const Movies = ({movies, selectMovie}) => {
+const Movies = ({movies}) => {
     const moviePosters = movies.map(movie => {
         return (
             <Poster 
@@ -11,7 +11,6 @@ const Movies = ({movies, selectMovie}) => {
                 posterImage={movie.poster_path}
                 id={movie.id}
                 key={movie.id}
-                selectMovie={selectMovie}
             />
         )
     })
