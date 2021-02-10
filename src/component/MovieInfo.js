@@ -3,7 +3,7 @@ import '../scss/index.scss';
 import '../scss/MovieInfo.scss';
 import { Link } from 'react-router-dom';
 
-const MovieInfo = ({selectedMovie, handleClick}) => {
+const MovieInfo = ({selectedMovie}) => {
     const roundedRating = {}
     const dateConversion = {
 

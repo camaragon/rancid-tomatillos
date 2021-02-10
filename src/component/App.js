@@ -12,39 +12,31 @@ class App extends Component {
       movies: [],
       selectedMovie: "",
       isFetching: false, 
-      isLoading: false,
-      allMoviesError: null,
-      movieError: null
+      isLoading: true
     } 
   }
 
   componentDidMount = () => {
     this.setState({isFetching: true})
 
-    fetch("https://rancid-tomatillos.herokua.com/api/v2/movies")
+    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
     .then(response => response.json())
     .then(data => {
       console.log(data.movies);
       this.setState({movies: data.movies, isFetching: false})
     }).catch(error => {
-      this.setState({isFetching: false, allMoviesError: error})
+      this.setState({isFetching: false})
     });
   }
 
-  handleClick = () => {
-    this.setState({selectedMovie: ""})
-  }
-
   selectMovie = (id) => {   
-    // this.setState({isLoading: true})
-    
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
     .then(response => response.json())
     .then(data => {
       console.log(data.movie);
       this.setState({selectedMovie: data.movie, isLoading: false})
     }).catch(error => {
-      this.setState({isLoading: false, movieError: error})
+      this.setState({isLoading: false})
     });
   }
 
@@ -54,13 +46,13 @@ class App extends Component {
         <header>
           <h1 className='header-title'>Rancid Tomatillos</h1>
         </header>
-        {/* {this.state.isLoading && <h2>Movie info is loading...</h2>}
-        {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>} */}
+        {/* {this.state.isLoading && this.state.movies.length === 0 && <h2>Movie info is loading...</h2>} */}
+        {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>}
         <Route 
         exact 
         path='/' 
         render={ () => {
-        if (this.state.movies.length === 0) {
+        if (this.state.movies.length === 0 && !this.state.isFetching) {
           console.log(this.state.movies)
           return (<h2 className='error-text'>Uh oh! Looks like we can't find the movies!</h2>)
         }
