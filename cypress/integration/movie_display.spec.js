@@ -3,9 +3,9 @@ describe('Main Display', () => {
     it('should be able to visit the base url and see a grid display of movie posters', () => {
         cy.visit(baseUrl);
     });
-    // beforeEach(() => {
-    //     cy.visit(baseUrl);
-    // });
+    beforeEach(() => {
+        cy.visit(baseUrl);
+    });
     it('should display a message while the posters are loading to inform the user', () => {
         cy
         .get('h2')
@@ -14,15 +14,11 @@ describe('Main Display', () => {
 
     it('should display an error if the movies are not loading', () => {
         cy
-        .intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movr', {
-            statusCode: 404,
-            body: {
-                message: 'Uh oh! Looks like we can\'t find the movies!'
+        .intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movieol', {
+            statusCode: 404
             }
-        })
-        // cy
-        // .get('h2')
-        // .contains('Uh oh!')
+        )
+        // .get('h2').contains('Uh oh!').url().should('include', '/movies')
     });
 
     it('should have a main title', () => {
@@ -39,7 +35,5 @@ describe('Main Display', () => {
             cy.get('.poster-rating').contains('5')
         })
     });
-
-    it('')
 
 })
