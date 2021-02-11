@@ -35,5 +35,10 @@ describe('Main Display', () => {
             cy.get('.poster-rating').contains('5')
         })
     });
-
-})
+    it('should take you to a movie information page when clicking on a movie poster', () => {
+        cy
+        .get('.poster-wrapper').within(() => {
+            cy.get('.poster-image').click({multiple: false})
+        })
+        })
+    })
