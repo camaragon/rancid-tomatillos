@@ -2,15 +2,10 @@ import React from 'react';
 import '../scss/index.scss';
 import '../scss/MovieInfo.scss';
 import { Link } from 'react-router-dom';
+const moment = require("moment");
 
 const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, revenue, runtime, tagline, genres}) => {
-    const dateConversion = {
-
-    }
     const runTimeConversion = {
-
-    }
-    const spaceOutGenres = {
 
     }
 
@@ -29,7 +24,7 @@ const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, reve
                   <p className='selected-movie-genres'>{genres}</p>
                 </div>
                 <p className='selected-movie-revenue'>Revenue: ${revenue}</p>
-                <p className='selected-movie-date'>{date}</p>
+                <p className='selected-movie-date'>Release Date: {moment(date).format("LL")}</p>
                 <p className='selected-movie-runtime'>Runtime {runtime} min</p>
               </div>
             </div>  
