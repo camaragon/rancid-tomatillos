@@ -55,7 +55,7 @@ class App extends Component {
         render={ () => {
         if (this.state.error && this.state.movies.length === 0) {
           console.log(this.state.movies)
-          return (<h2 className='error-text'>Uh oh... we can't find that movie!</h2>)
+          return (<h2 className='error-text'>Uh oh... we can't find the movies!</h2>)
         }
         return <Movies movies={this.state.movies} />
       }}
