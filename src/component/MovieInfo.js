@@ -5,8 +5,11 @@ import { Link } from 'react-router-dom';
 const moment = require("moment");
 
 const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, revenue, runtime, tagline, genres}) => {
-    const runTimeConversion = {
-
+    const runTimeConversion = (runtime) => {
+      let h = Math.floor(runtime / 60);
+      let m = runtime % 60;
+      m = m < 10 ? "0" + m : m;
+      return `${h}h ${m}`
     }
 
     return (
@@ -25,7 +28,7 @@ const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, reve
                 </div>
                 <p className='selected-movie-revenue'>Revenue: ${revenue}</p>
                 <p className='selected-movie-date'>Release Date: {moment(date).format("LL")}</p>
-                <p className='selected-movie-runtime'>Runtime {runtime} min</p>
+                <p className='selected-movie-runtime'>Runtime {runTimeConversion(runtime)} min</p>
               </div>
             </div>  
             <Link to='/'><button className='button-lobby' >Back to Lobby</button></Link>
