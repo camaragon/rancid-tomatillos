@@ -13,7 +13,7 @@ describe('Main Display', () => {
         )
     });
 
-    it.only('should display an error if the movies are not loading', () => {
+    it('should display an error if movies are not loading', () => {
         cy.visit('http://localhost:3000/33f')
         .intercept('GET', '/sdfw', {
             statusCode: 404,
