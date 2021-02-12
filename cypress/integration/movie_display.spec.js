@@ -13,8 +13,8 @@ describe('Main Display', () => {
         )
     });
 
-    it('should display an error if the movies are not loading', () => {
-        cy
+    it.only('should display an error if the movies are not loading', () => {
+        cy.visit('http://localhost:3000/33f')
         .intercept('GET', '/sdfw', {
             statusCode: 404,
             headers: { "access-control-allow-origin": "*"},
@@ -23,14 +23,14 @@ describe('Main Display', () => {
             },
             movies: []
             })
-        .request({
-            method: 'GET', 
-            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movirr',
-            failOnStatusCode: false 
-        })
-        .then((response) => {
-            expect(response).to.have.property('status', 404)
-        })
+        // .request({
+        //     method: 'GET', 
+        //     url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movirr',
+        //     failOnStatusCode: false 
+        // })
+        // .then((response) => {
+        //     expect(response).to.have.property('status', 404)
+        // })
         .get('h2').contains('Uh oh... we can\'t find that movie!')
         // .get('h2').contains('Uh oh!').url().should('include', '/movies')
         // cy.visit('http://localhost:3000/')
