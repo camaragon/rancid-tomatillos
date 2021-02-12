@@ -20,7 +20,7 @@ describe('Movie Info Display', () => {
         cy.get('.selected-movie-rating').contains('5')
     })
     it('should display a summary of the movie', () => {
-        cy.get('.selected-movie-overview').contains('some summary I will add')
+        cy.get('.selected-movie-overview').contains('When the Emperor of China')
     })
     it('should display the movie\'s release date', () => {
         cy.get('.selected-movie-date').contains('some date')
