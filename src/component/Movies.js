@@ -7,7 +7,7 @@ const Movies = ({movies}) => {
         return (
             <Poster 
                 title={movie.title}
-                rating={movie.average_rating}
+                rating={movie.average_rating.toFixed(1)}
                 posterImage={movie.poster_path}
                 id={movie.id}
                 key={movie.id}
