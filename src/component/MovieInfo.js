@@ -23,7 +23,7 @@ const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, reve
                   <h2 className='selected-movie-title'>{title}</h2>
                   <p className='selected-movie-tagline'>{tagline}</p>
                 </div>
-                <p className='selected-movie-rating'>{rating}/10 (Average Rating)</p>
+                <p className='selected-movie-rating'>{parseFloat(rating).toFixed(1)}/10 (Average Rating)</p>
                 <div className='summary-container'>
                   <p className='selected-movie-overview'>{overview}</p>
                   <p className='selected-movie-genres'>{genres}</p>
