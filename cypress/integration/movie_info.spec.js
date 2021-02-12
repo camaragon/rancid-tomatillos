@@ -1,11 +1,8 @@
 describe('Movie Info Display', () => {
     const movie1 = 'http://localhost:3000/337401';
-    // const movie2 = 'http://localhost:3000/413518';
-    // const movie3 = 'http://localhost:3000/579583';
+    const movie2 = 'http://localhost:3000/718444';
     beforeEach(() => {
         cy.visit(movie1);
-        // cy.visit(movie2);
-        // cy.visit(movie3);
     });
     it('should replace the background with an image from the selected movie', () => {
         cy.get('.selected-movie-display').should('have.css', 'backgroundImage')
@@ -23,15 +20,18 @@ describe('Movie Info Display', () => {
         cy.get('.selected-movie-overview').contains('When the Emperor of China')
     })
     it('should display the movie\'s release date', () => {
-        cy.get('.selected-movie-date').contains('some date')
+        cy.get('.selected-movie-date').contains('September 4, 2020')
     })
     it('should display the runtime of the selected movie', () => {
-        cy.get('selected-movie-runtime').contains('the runtime')
+        cy.get('.selected-movie-runtime').contains('1h 55 min')
     })
     it('should display other details for the movie if available', () => {
-        //tagline, genres, revenue
+        cy.get('.selected-movie-revenue').contains('$57000000')
+        cy.visit(movie2);
+        cy.get('.selected-movie-genres').contains('Action')
+        cy.get('.selected-movie-tagline').contains('When the hunter becomes the prey.')
     })
     it('should go back to the main page when the button is clicked', () => {
-        cy.get('button-lobby').click()
+        cy.get('.button-lobby').click()
     })
 })
