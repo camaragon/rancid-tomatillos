@@ -15,23 +15,25 @@ describe('Main Display', () => {
 
     it('should display an error if the movies are not loading', () => {
         cy
-        .intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movirr', {
+        .intercept('GET', '/sdfw', {
             statusCode: 404,
+            headers: { "access-control-allow-origin": "*"},
             body: {
                 message: "Uh oh... we can\'t find that movie!"
-            }
+            },
+            movies: []
             })
-            //or add property for movies: 0?
-        // .request({
-        //     method: 'GET', 
-        //     url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movirr',
-        //     failOnStatusCode: false 
-        // })
+        .request({
+            method: 'GET', 
+            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movirr',
+            failOnStatusCode: false 
+        })
+        .then((response) => {
+            expect(response).to.have.property('status', 404)
+        })
         .get('h2').contains('Uh oh... we can\'t find that movie!')
-        // .then((response) => {
-        //     expect(response).to.have.property('status', 404)
-        // })
         // .get('h2').contains('Uh oh!').url().should('include', '/movies')
+        // cy.visit('http://localhost:3000/')
         // cy.visit('http://localhost:3000/')
     });
 
