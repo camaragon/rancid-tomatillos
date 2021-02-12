@@ -10,7 +10,7 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      selectedMovie: "",
+      selectedMovie: {},
       isFetching: false, 
       isLoading: true,
       error: false
@@ -24,7 +24,7 @@ class App extends Component {
     .then(response => response.json())
     .then(data => {
       console.log(data.movies);
-      this.setState({movies: data.movies})
+      this.setState({movies: data.movies, isFetching: false})
     }).catch(error => {
       this.state.error = true;
     }).finally({isFetching: false});
@@ -53,9 +53,8 @@ class App extends Component {
         exact 
         path='/' 
         render={ () => {
-        if ( this.state.error && this.state.movies.length === 0) {
+        if (this.state.error && this.state.movies.length === 0) {
           console.log(this.state.movies)
-          // this.state.isFetching = false;
           return (<h2 className='error-text'>Uh oh... we can't find that movie!</h2>)
         }
         return <Movies movies={this.state.movies} />
@@ -70,7 +69,21 @@ class App extends Component {
             return (<h2 className='error-text'>Uh oh... we can't find that movie!</h2>);
           }
           this.selectMovie(currentMovie.id);
-          return <MovieInfo match={match} selectedMovie={this.state.selectedMovie} />
+          return (
+          <MovieInfo 
+            match={match} 
+            title={this.state.selectedMovie.title}
+            backdrop={this.state.selectedMovie.backdrop_path}
+            poster={this.state.selectedMovie.poster_path}
+            overview={this.state.selectedMovie.overview}
+            rating={this.state.selectedMovie.average_rating}
+            date={this.state.selectedMovie.release_date}
+            revenue={this.state.selectedMovie.revenue}
+            runtime={this.state.selectedMovie.runtime}
+            tagline={this.state.selectedMovie.tagline}
+            genres={this.state.selectedMovie.genres} 
+          />
+          )
         }} 
         />
 
