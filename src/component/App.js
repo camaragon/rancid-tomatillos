@@ -10,9 +10,10 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      selectedMovie: "",
+      selectedMovie: {},
       isFetching: false, 
-      isLoading: true
+      isLoading: true,
+      error: false
     } 
   }
 
@@ -25,8 +26,8 @@ class App extends Component {
       console.log(data.movies);
       this.setState({movies: data.movies, isFetching: false})
     }).catch(error => {
-      this.setState({isFetching: false})
-    });
+      this.state.error = true;
+    }).finally({isFetching: false});
   }
 
   selectMovie = (id) => {   
@@ -34,10 +35,10 @@ class App extends Component {
     .then(response => response.json())
     .then(data => {
       console.log(data.movie);
-      this.setState({selectedMovie: data.movie, isLoading: false})
+      this.setState({selectedMovie: data.movie})
     }).catch(error => {
-      this.setState({isLoading: false})
-    });
+      this.state.error = true;
+    }).finally({isLoading: false});
   }
 
   render() {
@@ -52,9 +53,9 @@ class App extends Component {
         exact 
         path='/' 
         render={ () => {
-        if (this.state.movies.length === 0 && !this.state.isFetching) {
+        if (this.state.error && this.state.movies.length === 0) {
           console.log(this.state.movies)
-          return (<h2 className='error-text'>Uh oh! Looks like we can't find the movies!</h2>)
+          return (<h2 className='error-text'>Uh oh... we can't find the movies!</h2>)
         }
         return <Movies movies={this.state.movies} />
       }}
@@ -65,10 +66,24 @@ class App extends Component {
         render={({ match }) => {
           const currentMovie = this.state.movies.find(movie => movie.id === parseInt(match.params.id));
           if (!currentMovie) {
-            return (<h2>Uh oh... we can't find that movie!</h2>);
+            return (<h2 className='error-text'>Uh oh... we can't find that movie!</h2>);
           }
           this.selectMovie(currentMovie.id);
-          return <MovieInfo match={match} selectedMovie={this.state.selectedMovie} />
+          return (
+          <MovieInfo 
+            match={match} 
+            title={this.state.selectedMovie.title}
+            backdrop={this.state.selectedMovie.backdrop_path}
+            poster={this.state.selectedMovie.poster_path}
+            overview={this.state.selectedMovie.overview}
+            rating={this.state.selectedMovie.average_rating}
+            date={this.state.selectedMovie.release_date}
+            revenue={this.state.selectedMovie.revenue}
+            runtime={this.state.selectedMovie.runtime}
+            tagline={this.state.selectedMovie.tagline}
+            genres={this.state.selectedMovie.genres} 
+          />
+          )
         }} 
         />
 
