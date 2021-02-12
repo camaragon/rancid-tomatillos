@@ -12,7 +12,8 @@ class App extends Component {
       movies: [],
       selectedMovie: "",
       isFetching: false, 
-      isLoading: true
+      isLoading: true,
+      error: false
     } 
   }
 
@@ -23,13 +24,10 @@ class App extends Component {
     .then(response => response.json())
     .then(data => {
       console.log(data.movies);
-      this.setState({movies: data.movies, isFetching: false})
+      this.setState({movies: data.movies})
     }).catch(error => {
-      this.setState({isFetching: false})
-      //add error state error: true 
-      //in the <route> add condition for error
-      //.finally({isFetching: false}) instead
-    });
+      this.state.error = true;
+    }).finally({isFetching: false});
   }
 
   selectMovie = (id) => {   
@@ -37,10 +35,10 @@ class App extends Component {
     .then(response => response.json())
     .then(data => {
       console.log(data.movie);
-      this.setState({selectedMovie: data.movie, isLoading: false})
+      this.setState({selectedMovie: data.movie})
     }).catch(error => {
-      this.setState({isLoading: false})
-    });
+      this.state.error = true;
+    }).finally({isLoading: false});
   }
 
   render() {
@@ -55,7 +53,7 @@ class App extends Component {
         exact 
         path='/' 
         render={ () => {
-        if (!this.state.movies) {
+        if ( this.state.error && this.state.movies.length === 0) {
           console.log(this.state.movies)
           // this.state.isFetching = false;
           return (<h2 className='error-text'>Uh oh... we can't find that movie!</h2>)
