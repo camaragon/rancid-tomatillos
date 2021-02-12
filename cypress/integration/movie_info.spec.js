@@ -14,7 +14,7 @@ describe('Movie Info Display', () => {
         cy.get('.selected-movie-poster').should('be.visible')
     })
     it('should display the movie title', () => {
-        cy.get('h2').contains('Mulan')
+        cy.get('.selected-movie-title').contains('Mulan')
     })
     it('should display an average rating', () => {
         cy.get('.selected-movie-rating').contains('5')

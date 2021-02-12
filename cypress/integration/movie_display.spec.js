@@ -9,16 +9,30 @@ describe('Main Display', () => {
     it('should display a message while the posters are loading to inform the user', () => {
         cy
         .get('h2')
-        .contains('The movies are on their way!')
+        .contains('The movies are on their way!'
+        )
     });
 
     it('should display an error if the movies are not loading', () => {
         cy
-        .intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movieol', {
-            statusCode: 404
+        .intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movirr', {
+            statusCode: 404,
+            body: {
+                message: "Uh oh... we can\'t find that movie!"
             }
-        )
+            })
+            //or add property for movies: 0?
+        // .request({
+        //     method: 'GET', 
+        //     url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movirr',
+        //     failOnStatusCode: false 
+        // })
+        .get('h2').contains('Uh oh... we can\'t find that movie!')
+        // .then((response) => {
+        //     expect(response).to.have.property('status', 404)
+        // })
         // .get('h2').contains('Uh oh!').url().should('include', '/movies')
+        // cy.visit('http://localhost:3000/')
     });
 
     it('should have a main title', () => {
