@@ -3,8 +3,7 @@ import '../scss/index.scss';
 import '../scss/MovieInfo.scss';
 import { Link } from 'react-router-dom';
 
-const MovieInfo = ({selectedMovie}) => {
-    const roundedRating = {}
+const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, revenue, runtime, tagline, genres}) => {
     const dateConversion = {
 
     }
@@ -16,22 +15,22 @@ const MovieInfo = ({selectedMovie}) => {
     }
 
     return (
-        <section className='selected-movie-display' style={{backgroundImage: `url(${selectedMovie.backdrop_path})`}}>
+        <section className='selected-movie-display' style={{backgroundImage: `url(${backdrop})`}}>
             <div className='movie-info-container'>
-              <img className='selected-movie-poster' src={selectedMovie.poster_path} alt={`Movie poster of ${selectedMovie.title}`} ></img>
+              <img className='selected-movie-poster' src={poster} alt={`Movie poster of ${title}`} ></img>
               <div className='movie-info-container-inner'>
                 <div className='selected-movie-header-container'>
-                  <h2 className='selected-movie-title'>{selectedMovie.title}</h2>
-                  <p className='selected-movie-tagline'>{selectedMovie.tagline}</p>
+                  <h2 className='selected-movie-title'>{title}</h2>
+                  <p className='selected-movie-tagline'>{tagline}</p>
                 </div>
-                <p className='selected-movie-rating'>{selectedMovie.average_rating}/10 (Average Rating)</p>
+                <p className='selected-movie-rating'>{rating}/10 (Average Rating)</p>
                 <div className='summary-container'>
-                  <p className='selected-movie-overview'>{selectedMovie.overview}</p>
-                  <p className='selected-movie-genres'>{selectedMovie.genres}</p>
+                  <p className='selected-movie-overview'>{overview}</p>
+                  <p className='selected-movie-genres'>{genres}</p>
                 </div>
-                <p className='selected-movie-revenue'>Revenue: ${selectedMovie.revenue}</p>
-                <p className='selected-movie-date'>{selectedMovie.release_date}</p>
-                <p className='selected-movie-runtime'>Runtime {selectedMovie.runtime} min</p>
+                <p className='selected-movie-revenue'>Revenue: ${revenue}</p>
+                <p className='selected-movie-date'>{date}</p>
+                <p className='selected-movie-runtime'>Runtime {runtime} min</p>
               </div>
             </div>  
             <Link to='/'><button className='button-lobby' >Back to Lobby</button></Link>
