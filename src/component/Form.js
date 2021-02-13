@@ -7,8 +7,8 @@ const Form = () => {
             <label>Search</label>
             <input type='text' placeholder='Search'></input>
             <div className='filter-sort'>
-                <p>Filter</p>
-                <p>Sort</p>
+                <label>Sort</label>
+                <input ></input>
             </div>
         </form>
     )
