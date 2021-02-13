@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import '../scss/index.scss';
 import Movies from './Movies';
 import MovieInfo from './MovieInfo';
+import Form from './Form';
 import { Route, Switch } from 'react-router-dom';
 import { List } from 'react-content-loader';
 
@@ -53,6 +54,7 @@ class App extends Component {
         <header>
           <h1 className='header-title'>Rancid Tomatillos</h1>
         </header>
+        <Form />
         {/* {this.state.isLoading && this.state.movies.length === 0 && <h2>Movie info is loading...</h2>} */}
         {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>}
         <Switch>
