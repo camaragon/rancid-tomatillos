@@ -75,8 +75,9 @@
     padding: 2vh;
 }
 
-// .genres {
-//     display: flex;
-//     align-items: center;
-//     justify-content: space-between;
-// }
+.selected-movie-genres {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
