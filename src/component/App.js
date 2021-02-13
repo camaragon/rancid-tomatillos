@@ -13,10 +13,12 @@ class App extends Component {
     this.state = {
       movies: [],
       selectedMovie: {},
+      filteredMovies: [],
       isFetching: false, 
       isLoading: false,
       error: false,
-      received: false
+      received: false,
+      didSearch: false
     }
   }
 
@@ -50,9 +52,11 @@ class App extends Component {
 
   searchMovieTitle = (searchInput) => {
     console.log(searchInput);
-    // const searchedMovies = this.state.movies.filter(movie => {
-
-    // })
+    const searchedMovies = this.state.movies.filter(movie => {
+      return movie.title.toLowerCase().includes(searchInput.toLowerCase());
+    })
+    this.setState({filteredMovies: searchedMovies, didSearch: true})
+    console.log(this.state.filteredMovies)
   }
 
   render() {
@@ -72,8 +76,14 @@ class App extends Component {
             if (this.state.error && this.state.movies.length === 0) {
               return (<h2 className='error-text'>Uh oh... we can't find the movies!</h2>)
             }
+            if (this.state.filteredMovies.length === 0 && !this.state.didSearch) {
+              this.state.received = false;
+              return <Movies movies={this.state.movies} />
+            } else if (this.state.filteredMovies.length === 0 && this.state.didSearch) {
+              return (<h2>No criteria matched your search!</h2>)
+            }
             this.state.received = false;
-            return <Movies movies={this.state.movies} />
+              return <Movies movies={this.state.filteredMovies} />
             }}
           />
           <Route 
