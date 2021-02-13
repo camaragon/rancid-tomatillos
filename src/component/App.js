@@ -48,13 +48,20 @@ class App extends Component {
 
   MyListLoader = () => <List />
 
+  searchMovieTitle = (searchInput) => {
+    console.log(searchInput);
+    // const searchedMovies = this.state.movies.filter(movie => {
+
+    // })
+  }
+
   render() {
     return (
       <main>
         <header>
           <h1 className='header-title'>Rancid Tomatillos</h1>
         </header>
-        <Form />
+        <Form searchMovieTitle={this.searchMovieTitle}/>
         {/* {this.state.isLoading && this.state.movies.length === 0 && <h2>Movie info is loading...</h2>} */}
         {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>}
         <Switch>
