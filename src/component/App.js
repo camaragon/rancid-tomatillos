@@ -4,6 +4,7 @@ import '../scss/index.scss';
 import Movies from './Movies';
 import MovieInfo from './MovieInfo';
 import { Route, Switch } from 'react-router-dom';
+import { List } from 'react-content-loader';
 
 class App extends Component {
   constructor() {
@@ -12,10 +13,10 @@ class App extends Component {
       movies: [],
       selectedMovie: {},
       isFetching: false, 
-      isLoading: true,
+      isLoading: false,
       error: false,
       received: false
-    } 
+    }
   }
 
   componentDidMount = () => {
@@ -30,18 +31,21 @@ class App extends Component {
     }).finally({isFetching: false});
   }
 
-  selectMovie = (id) => {   
+  selectMovie = (id) => { 
     if (!this.state.received) {
       fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
       .then(response => response.json())
       .then(data => {
         console.log(data.movie);
         this.setState({selectedMovie: data.movie, received: true})
+        console.log(this.state.selectedMovie.genres)
       }).catch(error => {
         this.state.error = true;
       }).finally({isLoading: false});
     }
   }
+
+  MyListLoader = () => <List />
 
   render() {
     return (
@@ -73,7 +77,7 @@ class App extends Component {
               }
               this.selectMovie(currentMovie.id);
               return (
-              <MovieInfo 
+              !this.state.received ? <List /> : <MovieInfo 
                 match={match} 
                 title={this.state.selectedMovie.title}
                 backdrop={this.state.selectedMovie.backdrop_path}
