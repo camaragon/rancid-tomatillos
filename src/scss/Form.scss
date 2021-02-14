@@ -1,14 +1,24 @@
 .querying-form {
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     background: #870a22;
 }
 
 // .filter-sort {
+//     background: white;
 //     width: 40vw;
 //     display: flex;
 //     align-items: center;
 //     justify-content: space-between;
 // }
+.dropdown-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropdown *{
+    background: white;
+}

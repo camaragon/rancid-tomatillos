@@ -13,6 +13,7 @@ class App extends Component {
       movies: [],
       selectedMovie: {},
       filteredMovies: [],
+      sortedMovies: {},
       isFetching: false, 
       isLoading: false,
       error: false,
@@ -61,6 +62,23 @@ class App extends Component {
     this.render();
   }
 
+  sortMovies = (e) => {
+    console.log(e)
+    if (e === '1') {
+      const sortedMovies = this.state.movies.sort((a, b) => b.average_rating - a.average_rating);
+      this.state.sortedMovies.highLow = sortedMovies; 
+    } else if (e === '2') {
+      const sortedMovies = this.state.movies.sort((a, b) => a.average_rating - b.average_rating);
+      this.state.sortedMovies.lowHigh = sortedMovies; 
+    } else if (e === '3') {
+      console.log('hi')
+      const sortedMovies = this.state.movies.sort((a, b) => a.title.localeCompare(b.title));
+      this.state.sortedMovies.alphabetical = sortedMovies;
+    }
+      const sortedMovies = this.state.movies.sort((a, b) => b.title.localeCompare(a.title));
+      this.state.sortedMovies.reverse = sortedMovies;
+  }
+
   render() {
     return (
       <main>
@@ -79,7 +97,7 @@ class App extends Component {
             }
             if (this.state.filteredMovies.length === 0 && !this.state.didSearch) {
               this.state.received = false;
-              return <Movies movies={this.state.movies} searchMovieTitle={this.searchMovieTitle}/>
+              return <Movies movies={this.state.movies} searchMovieTitle={this.searchMovieTitle} sortMovies={this.sortMovies}/>
             } else if (this.state.filteredMovies.length === 0 && this.state.didSearch) {
               return (
                 <React.Fragment>
@@ -89,8 +107,9 @@ class App extends Component {
               )
             }
             this.state.received = false;
-              return <Movies movies={this.state.filteredMovies} searchMovieTitle={this.searchMovieTitle}/>
+              return <Movies movies={this.state.filteredMovies} searchMovieTitle={this.searchMovieTitle} sortMovies={this.sortMovies}/>
             }}
+
           />
           <Route 
             exact 

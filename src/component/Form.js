@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 import '../scss/Form.scss';
 
-const Form = ({searchMovieTitle}) => {
+const Form = ({searchMovieTitle, sortMovies}) => {
     const [userInput, setUserInput] = useState('');
 
     const handleSearch = (event) => {
@@ -16,16 +17,26 @@ const Form = ({searchMovieTitle}) => {
         // clearInput();
         // filter if it includes whatever the current userInput is at 
     }
-    console.log(userInput)
+
+    // const handleSelect = (e) => {
+    //     console.log(e);
+    // }
 
     return (
         <form className='querying-form'>
             <label>Search</label>
             <input type='text' placeholder='Search' value={userInput} onChange={handleSearch} onKeyPress={(event) => filterSearchInput(event, userInput)}></input>
-            <div className='filter-sort'>
-                <label>Sort</label>
-                <input></input>
-            </div>
+            <DropdownButton className='dropdown' onSelect={sortMovies} id="dropdown-basic-button" title="Dropdown button" drop="right">
+                {/* <Dropdown.Item >Savory (7 - 10)</Dropdown.Item>
+                <Dropdown.Item href="/action-2">Perishable (4 - 6)</Dropdown.Item>
+                <Dropdown.Item href="/action-3">Rancid (0 - 3)</Dropdown.Item> */}
+                <Dropdown.Item eventKey='1'>Highest - Lowest</Dropdown.Item>
+                <Dropdown.Item eventKey='2'>Lowest - Highest</Dropdown.Item>
+                <Dropdown.Item eventKey='3'>A - Z (Title)</Dropdown.Item>
+                <Dropdown.Item eventKey='4'>Z - A (Title)</Dropdown.Item>
+            </DropdownButton>
+                {/* <label>Sort</label>
+                <input></input> */}
         </form>
     )
 }

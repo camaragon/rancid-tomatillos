@@ -3,7 +3,7 @@ import '../scss/index.scss'
 import Poster from './Poster';
 import Form from './Form';
 
-const Movies = ({movies, searchMovieTitle}) => {
+const Movies = ({movies, searchMovieTitle, sortMovies}) => {
     const moviePosters = movies.map(movie => {
         return (
             <Poster 
@@ -18,7 +18,7 @@ const Movies = ({movies, searchMovieTitle}) => {
     
     return (
         <React.Fragment>
-            <Form searchMovieTitle={searchMovieTitle}/>
+            <Form searchMovieTitle={searchMovieTitle} sortMovies={sortMovies}/>
             <section className='movie-grid'>
                 {moviePosters}
             </section>
