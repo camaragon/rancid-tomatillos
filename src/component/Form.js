@@ -14,13 +14,7 @@ const Form = ({searchMovieTitle, sortMovies, handleClick}) => {
             event.preventDefault();
             searchMovieTitle(userInput)
         }
-        // clearInput();
-        // filter if it includes whatever the current userInput is at 
     }
-
-    // const handleSelect = (e) => {
-    //     console.log(e);
-    // }
 
     return (
         <form className='querying-form'>
@@ -36,8 +30,6 @@ const Form = ({searchMovieTitle, sortMovies, handleClick}) => {
                 <Dropdown.Item eventKey='4'>Z - A (Title)</Dropdown.Item>
             </DropdownButton>
             <button onClick={handleClick} className='button-lobby' >Show All Movies</button>
-                {/* <label>Sort</label>
-                <input></input> */}
         </form>
     )
 }

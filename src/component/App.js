@@ -65,21 +65,16 @@ class App extends Component {
   sortMovies = (e) => {
     this.setState({isSorted: true})
     if (e === '1') {
-      const sortedMovies = this.state.movies.sort((a, b) => b.average_rating - a.average_rating);
-      // this.state.sortedMovies.highLow = sortedMovies; 
+      const sortedMovies = this.state.movies.sort((a, b) => b.average_rating - a.average_rating); 
       return sortedMovies;
     } else if (e === '2') {
       const sortedMovies = this.state.movies.sort((a, b) => a.average_rating - b.average_rating);
-      // this.state.sortedMovies.lowHigh = sortedMovies; 
       return sortedMovies;
     } else if (e === '3') {
-      console.log('hi')
       const sortedMovies = this.state.movies.sort((a, b) => a.title.localeCompare(b.title));
-      // this.state.sortedMovies.alphabetical = sortedMovies;
       return sortedMovies;
     }
       const sortedMovies = this.state.movies.sort((a, b) => b.title.localeCompare(a.title));
-      // this.state.sortedMovies.reverse = sortedMovies;
       return sortedMovies;
   }
 
@@ -90,7 +85,8 @@ class App extends Component {
           <h1 className='header-title'>Rancid Tomatillos</h1>
         </header>
         {/* {this.state.isLoading && this.state.movies.length === 0 && <h2>Movie info is loading...</h2>} */}
-        {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>}
+        {/* {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>} */}
+        {this.state.isFetching && <List />}
         <Switch>
           <Route 
             exact 
@@ -99,7 +95,7 @@ class App extends Component {
             if (this.state.error && this.state.movies.length === 0) {
               return (<h2 className='error-text'>Uh oh... we can't find the movies!</h2>)
             }
-            if (this.state.filteredMovies.length === 0 && !this.state.didSearch) {
+            if (this.state.filteredMovies.length === 0 && !this.state.didSearch && !this.state.isFetching) {
               this.state.received = false;
               return <Movies movies={this.state.movies} searchMovieTitle={this.searchMovieTitle} sortMovies={this.sortMovies} handleClick={this.handleClick}/>
             } else if (this.state.filteredMovies.length === 0 && this.state.didSearch) {
