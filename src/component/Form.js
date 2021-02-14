@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import '../scss/Form.scss';
 
-const Form = ({searchMovieTitle, sortMovies}) => {
+const Form = ({searchMovieTitle, sortMovies, handleClick}) => {
     const [userInput, setUserInput] = useState('');
 
     const handleSearch = (event) => {
@@ -35,6 +35,7 @@ const Form = ({searchMovieTitle, sortMovies}) => {
                 <Dropdown.Item eventKey='3'>A - Z (Title)</Dropdown.Item>
                 <Dropdown.Item eventKey='4'>Z - A (Title)</Dropdown.Item>
             </DropdownButton>
+            <button onClick={handleClick} className='button-lobby' >Show All Movies</button>
                 {/* <label>Sort</label>
                 <input></input> */}
         </form>
