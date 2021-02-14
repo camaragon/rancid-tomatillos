@@ -3,10 +3,8 @@ import React, { Component } from 'react';
 import '../scss/index.scss';
 import Movies from './Movies';
 import MovieInfo from './MovieInfo';
-import Form from './Form';
 import { Route, Switch } from 'react-router-dom';
 import { List } from 'react-content-loader';
-import { Link } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -52,12 +50,10 @@ class App extends Component {
   MyListLoader = () => <List />
 
   searchMovieTitle = (searchInput) => {
-    console.log(searchInput);
     const searchedMovies = this.state.movies.filter(movie => {
       return movie.title.toLowerCase().includes(searchInput.toLowerCase());
     })
     this.setState({filteredMovies: searchedMovies, didSearch: true})
-    console.log(this.state.filteredMovies)
   }
 
   handleClick = () => {
@@ -71,7 +67,6 @@ class App extends Component {
         <header>
           <h1 className='header-title'>Rancid Tomatillos</h1>
         </header>
-        <Form searchMovieTitle={this.searchMovieTitle}/>
         {/* {this.state.isLoading && this.state.movies.length === 0 && <h2>Movie info is loading...</h2>} */}
         {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>}
         <Switch>
@@ -84,7 +79,7 @@ class App extends Component {
             }
             if (this.state.filteredMovies.length === 0 && !this.state.didSearch) {
               this.state.received = false;
-              return <Movies movies={this.state.movies} />
+              return <Movies movies={this.state.movies} searchMovieTitle={this.searchMovieTitle}/>
             } else if (this.state.filteredMovies.length === 0 && this.state.didSearch) {
               return (
                 <React.Fragment>
@@ -94,7 +89,7 @@ class App extends Component {
               )
             }
             this.state.received = false;
-              return <Movies movies={this.state.filteredMovies} />
+              return <Movies movies={this.state.filteredMovies} searchMovieTitle={this.searchMovieTitle}/>
             }}
           />
           <Route 

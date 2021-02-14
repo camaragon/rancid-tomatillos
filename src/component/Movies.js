@@ -1,8 +1,9 @@
 import React from 'react';
 import '../scss/index.scss'
 import Poster from './Poster';
+import Form from './Form';
 
-const Movies = ({movies}) => {
+const Movies = ({movies, searchMovieTitle}) => {
     const moviePosters = movies.map(movie => {
         return (
             <Poster 
@@ -16,9 +17,12 @@ const Movies = ({movies}) => {
     })
     
     return (
-        <section className='movie-grid'>
-            {moviePosters}
-        </section>
+        <React.Fragment>
+            <Form searchMovieTitle={searchMovieTitle}/>
+            <section className='movie-grid'>
+                {moviePosters}
+            </section>
+        </React.Fragment>
     )
 }
 
