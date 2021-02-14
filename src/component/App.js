@@ -6,6 +6,7 @@ import MovieInfo from './MovieInfo';
 import Form from './Form';
 import { Route, Switch } from 'react-router-dom';
 import { List } from 'react-content-loader';
+import { Link } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -59,6 +60,11 @@ class App extends Component {
     console.log(this.state.filteredMovies)
   }
 
+  handleClick = () => {
+    this.setState({filteredMovies: [], didSearch: false})
+    this.render();
+  }
+
   render() {
     return (
       <main>
@@ -80,7 +86,12 @@ class App extends Component {
               this.state.received = false;
               return <Movies movies={this.state.movies} />
             } else if (this.state.filteredMovies.length === 0 && this.state.didSearch) {
-              return (<h2>No criteria matched your search!</h2>)
+              return (
+                <React.Fragment>
+                  <h2>No criteria matched your search!</h2>
+                  <button onClick={this.handleClick} className='button-lobby' >Go Back</button>
+                </React.Fragment>
+              )
             }
             this.state.received = false;
               return <Movies movies={this.state.filteredMovies} />
