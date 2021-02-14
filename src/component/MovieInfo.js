@@ -24,7 +24,10 @@ const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, reve
                 <p className='selected-movie-rating'>{parseFloat(rating).toFixed(1)}/10 (Average Rating)</p>
                 <div className='summary-container'>
                   <p className='selected-movie-overview'>{overview}</p>
-                  <p className='selected-movie-genres'>{genres}</p>
+                  <div className='selected-movie-genres'>{genres.map((genre, index) => (
+                    <p key={index} className='genre'>{genre}</p>
+                  ))}
+                  </div>
                 </div>
                 <p className='selected-movie-revenue'>Revenue: ${revenue}</p>
                 <p className='selected-movie-date'>Release Date: {moment(date).format("LL")}</p>
