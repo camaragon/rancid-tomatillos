@@ -30,7 +30,7 @@ const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, reve
                   ))}
                   </div>
                 </div>
-                <p className='selected-movie-revenue'>Revenue: ${revenue}</p>
+                <p className='selected-movie-revenue' style={{display: revenue === 0 ? 'none' : 'block'}}>Revenue: ${revenue.toLocaleString()}</p>
                 <p className='selected-movie-date'>Release Date: {moment(date).format("LL")}</p>
                 <p className='selected-movie-runtime'>Runtime {runTimeConversion(runtime)} min</p>
               </div>

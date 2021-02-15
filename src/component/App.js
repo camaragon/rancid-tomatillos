@@ -109,7 +109,6 @@ class App extends Component {
               </React.Fragment>
             )
           } else if (this.state.isSorted) {
-            // this.state.isSorted = false;
             console.log(this.state.movies);
             return <Movies movies={this.sortMovies} searchMovieTitle={this.searchMovieTitle} sortMovies={this.sortMovies} handleClick={this.handleClick} isSorted={this.state.isSorted} didSearch={this.state.didSearch}/>
           }
