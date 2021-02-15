@@ -77,9 +77,9 @@
     padding: 2vh;
 }
 
-.selected-movie-genres {
-    width: 50%;
+.selected-movie-genres * {
+    color: $poster-background;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    margin: 2px;
 }

@@ -11,13 +11,6 @@
     width: 100%;
 }
 
-// .filter-sort {
-//     background: white;
-//     width: 40vw;
-//     display: flex;
-//     align-items: center;
-//     justify-content: space-between;
-// }
 .dropdown-menu{
     @include flex-column;
     align-items: center;
