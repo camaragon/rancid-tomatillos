@@ -59,7 +59,7 @@ describe('Main Display', () => {
 
     it('should see a form with a search bar and dropdown button', () => {
         cy
-        .wait(500)
+        .wait(750)
         .get('.querying-form').within(() => {
             cy.get('input').should('be.visible')
             cy.get('.dropdown').should('be.visible')
@@ -69,7 +69,7 @@ describe('Main Display', () => {
 
     it('should display a list of sorting options on click of dropdown button', () => {
         cy
-        .wait(500)
+        .wait(750)
         .get('.dropdown').click()
         .get('.dropdown-option').contains('Highest - Lowest')
         .get('.dropdown-option').contains('Lowest - Highest')
@@ -79,7 +79,7 @@ describe('Main Display', () => {
 
     it('should display the list of movies in order of rating from highest to lowest when that option is selected', () => {
         cy
-        .wait(500)
+        .wait(750)
         .get('.dropdown').click()
         .contains('Highest - Lowest').click()
         .get('.poster-wrapper:first').within(() => {
@@ -89,13 +89,40 @@ describe('Main Display', () => {
 
     it('should display the list of movies in order of rating from lowest to highest when that option is selected', () => {
         cy
-        .wait(500)
+        .wait(750)
         .get('.dropdown').click()
-        .contains('Highest - Lowest').click()
+        .contains('Lowest - Highest').click()
         .get('.poster-wrapper:first').within(() => {
-            cy.get('.poster-title').contains('Peninsula')
+            cy.get('.poster-title').contains('The Pale Door')
         })
     })
 
+    it('should display the list of movies in alphabetical order by title when that option is selected', () => {
+        cy
+        .wait(750)
+        .get('.dropdown').click()
+        .contains('A - Z (Title)').click()
+        .get('.poster-wrapper:first').within(() => {
+            cy.get('.poster-title').contains('2067')
+        })
+        .get('.poster-wrapper:last').within(() => {
+            cy.get('.poster-title').contains('Trolls')
+        })
+    })
+
+    it('should display the list of movies in reverse alphabetical order by title when that option is selected', () => {
+        cy
+        .wait(750)
+        .get('.dropdown').click()
+        .contains('Z - A (Title)').click()
+        .get('.poster-wrapper:first').within(() => {
+            cy.get('.poster-title').contains('Trolls')
+        })
+        .get('.poster-wrapper:last').within(() => {
+            cy.get('.poster-title').contains('2067')
+        })
+    })
+
+    it('sh')
 
     })
