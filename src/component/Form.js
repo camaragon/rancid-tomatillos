@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import '../scss/Form.scss';
 
-const Form = ({searchMovieTitle, sortMovies, handleClick}) => {
+const Form = ({searchMovieTitle, sortMovies, handleClick, isSorted, didSearch}) => {
     const [userInput, setUserInput] = useState('');
 
     const handleSearch = (event) => {
@@ -26,6 +26,7 @@ const Form = ({searchMovieTitle, sortMovies, handleClick}) => {
                     aria-required='true'
                     onChange={handleSearch} 
                     onKeyPress={(event) => filterSearchInput(event, userInput)}
+                    style={{display: isSorted ? 'none' : 'block'}}
                     >
                 </input>
             <DropdownButton 
@@ -34,6 +35,7 @@ const Form = ({searchMovieTitle, sortMovies, handleClick}) => {
                 id="dropdown-basic-button" 
                 title="Sort by ↓" 
                 drop="right"
+                style={{display: didSearch ? 'none' : 'block'}}
             >
                 <Dropdown.Item className='dropdown-option' eventKey='1'>Highest - Lowest</Dropdown.Item>
                 <Dropdown.Item className='dropdown-option' eventKey='2'>Lowest - Highest</Dropdown.Item>
