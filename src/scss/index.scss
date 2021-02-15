@@ -3,6 +3,7 @@
 @import 'Poster.scss';
 @import 'variables.scss';
 @import 'extends.scss';
+@import 'MovieInfo.scss';
 
 body {
   margin: 0;
@@ -62,6 +63,6 @@ main {
     padding: 0.3em;
     margin: 0.2em;
     width: 95%;
-    font-size: 25px;
+    font-size: 20px;
   }
 }
