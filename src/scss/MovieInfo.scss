@@ -84,3 +84,29 @@
     align-items: center;
     margin: 2px;
 }
+
+@media screen and (max-width: 900px) {
+    .movie-info-container {
+        @include black-box-shadow-transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Montserrat', sans-serif;
+        margin: 5vh;
+        padding: 2vh;
+    }
+
+    .selected-movie-title {
+        color: $title-font;
+        text-shadow: 2px 2px 1px #3f3a3a;
+        display: flex;
+        font-size: 2em;
+        margin: 0;
+    }
+
+    .selected-movie-header-container {
+        @include flex-column;
+        align-items: center;
+        margin-bottom: 0em;
+    }
+}

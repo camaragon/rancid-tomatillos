@@ -19,13 +19,24 @@ const Form = ({searchMovieTitle, sortMovies, handleClick}) => {
     return (
         <form className='querying-form'>
             <div className='search-wrapper'>
-                <label>Search ☞ </label>
-                <input type='text' placeholder='Search Movies <press Enter>' value={userInput} onChange={handleSearch} onKeyPress={(event) => filterSearchInput(event, userInput)}></input>
+                <input 
+                    type='text' 
+                    placeholder='Search Movies <press Enter>' 
+                    value={userInput} 
+                    aria-label='Movie Search by Title'
+                    aria-required='true'
+                    onChange={handleSearch} 
+                    onKeyPress={(event) => filterSearchInput(event, userInput)}
+                    >
+                </input>
             </div>
-            <DropdownButton className='dropdown' onSelect={sortMovies} id="dropdown-basic-button" title="Sort by ↓" drop="right">
-                {/* <Dropdown.Item >Savory (7 - 10)</Dropdown.Item>
-                <Dropdown.Item href="/action-2">Perishable (4 - 6)</Dropdown.Item>
-                <Dropdown.Item href="/action-3">Rancid (0 - 3)</Dropdown.Item> */}
+            <DropdownButton 
+                className='dropdown' 
+                onSelect={sortMovies} 
+                id="dropdown-basic-button" 
+                title="Sort by ↓" 
+                drop="right"
+            >
                 <Dropdown.Item eventKey='1'>Highest - Lowest</Dropdown.Item>
                 <Dropdown.Item eventKey='2'>Lowest - Highest</Dropdown.Item>
                 <Dropdown.Item eventKey='3'>A - Z (Title)</Dropdown.Item>
