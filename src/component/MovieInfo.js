@@ -2,6 +2,7 @@ import React from 'react';
 import '../scss/index.scss';
 import '../scss/MovieInfo.scss';
 import { Link } from 'react-router-dom';
+import Tomato from '../Tomato.js';
 const moment = require("moment");
 
 const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, revenue, runtime, tagline, genres}) => {
@@ -21,7 +22,7 @@ const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, reve
                   <h2 className='selected-movie-title'>{title}</h2>
                   <p className='selected-movie-tagline'>{tagline}</p>
                 </div>
-                <p className='selected-movie-rating'>{parseFloat(rating).toFixed(1)}/10 (Average Rating)</p>
+                <p className='selected-movie-rating'>{parseFloat(rating).toFixed(1)}/10 <Tomato /> (Average Rating)</p>
                 <div className='summary-container'>
                   <p className='selected-movie-overview'>{overview}</p>
                   <div className='selected-movie-genres'>{genres.map((genre, index) => (

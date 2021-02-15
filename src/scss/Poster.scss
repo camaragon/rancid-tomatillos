@@ -1,33 +1,47 @@
+@import 'MovieInfo.scss';
 @import 'variables.scss';
+@import 'extends.scss';
+
+.poster-wrapper * {
+    @include flex-column;
+    align-items: center;
+}
 
 .poster-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: black;
-    border-radius: 20px;
-    transition: 300ms ease;
     @include black-box-shadow-transparent;
-
+    background: $primary-background;
+    border-radius: 10px;
+    transition: 300ms ease;
     &:hover {
         transform: scale(1.08);
     }
 }
 
 .poster-image {
+    @include poster-image;
     height: 25em;
     width: 75%;
-    padding-top: 12%;
-    padding-left:12%
+    &:hover {
+        border-color: $poster-background;
+    }
 }
 
 .poster-title {
+    @include flex-column;
+    align-items: center;
     margin-bottom: 2px;
     margin-top: 2px;
-    color: white;
+    color: $primary-font-color;
+    font-family:'Montserrat', sans-serif;
+    padding: 0.8em;
 }
 
 .poster-rating {
-    margin-top: 0;
-    color: white;
+    color: $primary-font-color;
+}
+
+.rating-wrapper {
+    @include flex-row-center;
+    justify-content: center;
+    font-size: 1.2em;
 }

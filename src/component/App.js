@@ -5,6 +5,7 @@ import Movies from './Movies';
 import MovieInfo from './MovieInfo';
 import { Route, Switch } from 'react-router-dom';
 import { List } from 'react-content-loader';
+import Tomato from '../Tomato';
 
 class App extends Component {
   constructor() {
@@ -82,7 +83,9 @@ class App extends Component {
     return (
       <main>
         <header>
-          <h1 className='header-title'>Rancid Tomatillos</h1>
+          <h1 className='header-title'>
+            <Tomato /> RANCID TOMATILLOS <Tomato />
+            </h1>
         </header>
         {/* {this.state.isLoading && this.state.movies.length === 0 && <h2>Movie info is loading...</h2>} */}
         {/* {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>} */}

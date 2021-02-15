@@ -1,17 +1,22 @@
 @import 'variables.scss';
+@import 'extends.scss';
 
 .button-lobby {
     @include black-box-shadow;
     @include flex-row-center;
     color: $primary-font-color;
     justify-content: center;
-    width: 100%;
+    width: 20vw;
     padding: 0.7em;
     font-size: 1em;
+    &:hover {
+        color: $poster-background;
+    }
 }
 .movie-info-container {
     @include black-box-shadow-transparent;
     @include flex-row-center;
+    font-family: 'Montserrat', sans-serif;
     margin: 5vh;
     padding: 2vh;
 }
@@ -31,15 +36,13 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 120vh;
+    padding: 2em;
 }
 .selected-movie-poster {
+    @include poster-image;
     height: 27em;
     margin: 2vh;
-    border: solid $primary-font-color 5px;
-    border-radius: 6px;
-    box-shadow: 4px 4px 12px 0 rgba(0, 0, 0, 0.8),
-        -6px -6px 16px 0 rgba(135, 134, 134, 0.55)
 }
 .selected-movie-rating {
     font-size: 1em;
@@ -75,9 +78,9 @@
     padding: 2vh;
 }
 
-.selected-movie-genres {
-    width: 50%;
+.selected-movie-genres * {
+    color: $poster-background;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    margin: 2px;
 }
