@@ -19,7 +19,6 @@ const Form = ({searchMovieTitle, sortMovies, handleClick}) => {
     return (
         <form className='querying-form'>
             <div className='search-wrapper'>
-                <label>Search ☞ </label>
                 <input type='text' placeholder='Search Movies <press Enter>' value={userInput} onChange={handleSearch} onKeyPress={(event) => filterSearchInput(event, userInput)}></input>
             </div>
             <DropdownButton className='dropdown' onSelect={sortMovies} id="dropdown-basic-button" title="Sort by ↓" drop="right">
