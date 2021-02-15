@@ -24,3 +24,44 @@ main {
   align-items: center;
   color: $primary-font-color;
 }
+
+  @media screen and (max-width: 900px) {
+    .movie-grid{
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 25px;
+      background: $poster-background;
+  }
+
+  .header-title {
+    @include black-box-shadow;
+    display: flex;
+    justify-content: center;
+    padding: 0.3em;
+    margin: 0.2em;
+    width: 95%;
+    font-size: 40px;
+  }
+
+}
+
+  @media screen and (max-width: 650px) {
+    .movie-grid{
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 25px;
+      background: $poster-background;
+  }
+
+  .header-title {
+    @include black-box-shadow;
+    display: flex;
+    justify-content: center;
+    padding: 0.3em;
+    margin: 0.2em;
+    width: 95%;
+    font-size: 25px;
+  }
+}
