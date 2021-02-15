@@ -18,9 +18,11 @@ const Form = ({searchMovieTitle, sortMovies, handleClick}) => {
 
     return (
         <form className='querying-form'>
-            <label>Search</label>
-            <input type='text' placeholder='Search' value={userInput} onChange={handleSearch} onKeyPress={(event) => filterSearchInput(event, userInput)}></input>
-            <DropdownButton className='dropdown' onSelect={sortMovies} id="dropdown-basic-button" title="Dropdown button" drop="right">
+            <div className='search-wrapper'>
+                <label>Search ☞ </label>
+                <input type='text' placeholder='Search Movies' value={userInput} onChange={handleSearch} onKeyPress={(event) => filterSearchInput(event, userInput)}></input>
+            </div>
+            <DropdownButton className='dropdown' onSelect={sortMovies} id="dropdown-basic-button" title="Sort by ↓" drop="right">
                 {/* <Dropdown.Item >Savory (7 - 10)</Dropdown.Item>
                 <Dropdown.Item href="/action-2">Perishable (4 - 6)</Dropdown.Item>
                 <Dropdown.Item href="/action-3">Rancid (0 - 3)</Dropdown.Item> */}
