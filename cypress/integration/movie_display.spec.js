@@ -1,7 +1,9 @@
 describe('Main Display', () => {
     const baseUrl = 'http://localhost:3000';
     it('should be able to visit the base url and see a grid display of movie posters', () => {
-        cy.visit(baseUrl);
+        cy
+        .visit(baseUrl)
+        .location()
     });
     beforeEach(() => {
         cy.visit(baseUrl);
@@ -22,18 +24,7 @@ describe('Main Display', () => {
             },
             movies: []
             })
-        // .request({
-        //     method: 'GET', 
-        //     url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movirr',
-        //     failOnStatusCode: false 
-        // })
-        // .then((response) => {
-        //     expect(response).to.have.property('status', 404)
-        // })
         .get('h2').contains('Uh oh... we can\'t find that movie!')
-        // .get('h2').contains('Uh oh!').url().should('include', '/movies')
-        // cy.visit('http://localhost:3000/')
-        // cy.visit('http://localhost:3000/')
     });
 
     it('should have a main title', () => {
@@ -50,11 +41,12 @@ describe('Main Display', () => {
             cy.get('.poster-rating').contains('5')
         })
     });
-    it('should take you to a movie information page when clicking on a movie poster', () => {
+    it.only('should take you to a movie information page when clicking on a movie poster', () => {
         cy
         .get('.poster-wrapper:first').within(() => {
             cy.get('.poster-image').click()
         })
+        cy.location('pathname').should('eq', '/694919')
     })
 
     it('should see a form with a search bar and dropdown button', () => {
