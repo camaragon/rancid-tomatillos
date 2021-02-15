@@ -89,7 +89,7 @@ class App extends Component {
         </header>
         {/* {this.state.isLoading && this.state.movies.length === 0 && <h2>Movie info is loading...</h2>} */}
         {/* {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>} */}
-        {this.state.isFetching && <List />}
+        {this.state.isFetching && <List className='content-loader' />}
         <Switch>
           <Route 
             exact 

@@ -6,11 +6,10 @@ describe('Main Display', () => {
     beforeEach(() => {
         cy.visit(baseUrl);
     });
-    it('should display a message while the posters are loading to inform the user', () => {
+    it('should display a content loading screen while the posters are loading to inform the user', () => {
         cy
-        .get('h2')
-        .contains('The movies are on their way!'
-        )
+        .get('.content-loader')
+        .should('be.visible')
     });
 
     it('should display an error if movies are not loading', () => {
@@ -40,7 +39,7 @@ describe('Main Display', () => {
     it('should have a main title', () => {
         cy
         .get('h1')
-        .contains('Rancid Tomatillos')
+        .contains('RANCID TOMATILLOS')
     });
 
     it('should have a image, title, and rating displayed with each movie poster', () => {
