@@ -1,9 +1,14 @@
+@import 'variables.scss';
+@import 'extends.scss';
+
 .querying-form {
     display: flex;
     // flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background: #870a22;
+    background: $primary-background;
+    color: $primary-font-color;
+    padding: 4px;
 }
 
 // .filter-sort {
@@ -20,5 +25,17 @@
 }
 
 .dropdown *{
-    background: white;
+    @include black-box-shadow;
+    color: $primary-font-color;
+    font: 400 16px Arial;
+    padding: 0.7em;
+    width: 20vw;
+    &:hover {
+        color: $poster-background;
+    }
+}
+
+input {
+    width: 20vw;
+    padding: 0.7em;
 }

@@ -1,3 +1,12 @@
+@import 'variables.scss';
+@import 'extends.scss';
+
+#tomato-icon {
+  fill: $title-font;
+  height: 1em;
+  width: 1em;
+}
+
 .App {
   text-align: center;
 }
@@ -7,33 +16,45 @@
   pointer-events: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+// .App-header {
+//   background-color: #282c34;
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: calc(10px + 2vmin);
+//   color: white;
+// }
 
 .App-link {
-  color: #61dafb;
+  color: $highlight;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+// @keyframes App-logo-spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
 
 header {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: gray;
+  color: $primary-font-color;
+  background-color: $secondary-background;
+  font-size: 1.6em;
+  padding: 0.3em;
+}
+
+.header-title {
+  @include black-box-shadow;
+  display: flex;
+  justify-content: center;
+  padding: 0.3em;
+  margin: 0.2em;
+  width: 95%;
 }
