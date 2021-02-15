@@ -3,6 +3,11 @@
       -6px -6px 16px 0 rgba(57, 55, 55, 0.55);
     border-radius: 6px;
 }
+@mixin full-black-box-shadow-transparent() {
+    box-shadow: 4px 4px 12px 0 rgba(140, 136, 136, 0.8),
+      -6px -6px 16px 0 rgba(140, 136, 136, 0.8);
+    border-radius: 6px;
+}
 @mixin black-box-shadow() {
     background-color: $primary-background;
     box-shadow: 4px 4px 12px 0 rgba(0, 0, 0, 0.8),
@@ -22,6 +27,4 @@
 @mixin poster-image() {
     border: solid $primary-font-color 5px;
     border-radius: 6px;
-    box-shadow: 4px 4px 12px 0 rgba(0, 0, 0, 0.8),
-        -6px -6px 16px 0 rgba(135, 134, 134, 0.55)
 }

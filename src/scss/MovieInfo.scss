@@ -41,6 +41,8 @@
 }
 .selected-movie-poster {
     @include poster-image;
+    box-shadow: 4px 4px 12px 0 rgba(0, 0, 0, 0.8),
+        -6px -6px 16px 0 rgba(135, 134, 134, 0.55);
     height: 27em;
     margin: 2vh;
 }
