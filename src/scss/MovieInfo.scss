@@ -16,6 +16,7 @@
 .movie-info-container {
     @include black-box-shadow-transparent;
     @include flex-row-center;
+    font-family: 'Montserrat', sans-serif;
     margin: 5vh;
     padding: 2vh;
 }
