@@ -123,6 +123,37 @@ describe('Main Display', () => {
         })
     })
 
-    it('sh')
+    it('should be able to search movies by entering a string in the search bar', () => {
+        cy
+        .wait(750)
+        .get('input').type('Mulan{enter}')
+        .get('.poster-wrapper').within(() => {
+            cy.get('.poster-title').contains('Mulan')
+        })
+    })
 
+    it('should display an error if a string input into the search bar doesn\'t match', () => {
+        cy
+        .wait(750)
+        .get('input').type('school{enter}')
+        .get('h2').contains('No criteria matched your search!')
+    })
+
+    it('should be able to click a button on error page to go back to main display', () => {
+        cy
+        .wait(750)
+        .get('input').type('school{enter}')
+        .get('h2').contains('No criteria matched your search!')
+        .get('button').contains('Go Back')
+        .get('button').click()
+        .get('.movie-grid').should('be.visible')
+    })
+
+    it('should be able to click a button to refresh back to displaying all the movies', () => {
+        cy
+        .get('.button-lobby').click()
+        .get('.poster-wrapper:first').within(() => {
+            cy.get('.poster-title').contains('Money Plane')
+        })
+    })
     })
