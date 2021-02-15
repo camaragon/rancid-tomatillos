@@ -35,7 +35,7 @@ describe('Movie Info Display', () => {
     })
     
     it('should display other details for the movie if available', () => {
-        cy.get('.selected-movie-revenue').contains('$57000000')
+        cy.get('.selected-movie-revenue').contains('$57,000,000')
         cy.visit(movie2);
         cy.get('.selected-movie-genres').contains('Action')
         cy.get('.selected-movie-tagline').contains('When the hunter becomes the prey.')
