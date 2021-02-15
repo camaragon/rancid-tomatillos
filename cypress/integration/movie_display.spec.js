@@ -55,5 +55,47 @@ describe('Main Display', () => {
         .get('.poster-wrapper:first').within(() => {
             cy.get('.poster-image').click()
         })
+    })
+
+    it('should see a form with a search bar and dropdown button', () => {
+        cy
+        .wait(500)
+        .get('.querying-form').within(() => {
+            cy.get('input').should('be.visible')
+            cy.get('.dropdown').should('be.visible')
+            cy.get('.button-lobby').should('be.visible')
         })
+    })
+
+    it('should display a list of sorting options on click of dropdown button', () => {
+        cy
+        .wait(500)
+        .get('.dropdown').click()
+        .get('.dropdown-option').contains('Highest - Lowest')
+        .get('.dropdown-option').contains('Lowest - Highest')
+        .get('.dropdown-option').contains('A - Z (Title)')
+        .get('.dropdown-option').contains('Z - A (Title)')
+    })
+
+    it('should display the list of movies in order of rating from highest to lowest when that option is selected', () => {
+        cy
+        .wait(500)
+        .get('.dropdown').click()
+        .contains('Highest - Lowest').click()
+        .get('.poster-wrapper:first').within(() => {
+            cy.get('.poster-title').contains('Peninsula')
+        })
+    })
+
+    it('should display the list of movies in order of rating from lowest to highest when that option is selected', () => {
+        cy
+        .wait(500)
+        .get('.dropdown').click()
+        .contains('Highest - Lowest').click()
+        .get('.poster-wrapper:first').within(() => {
+            cy.get('.poster-title').contains('Peninsula')
+        })
+    })
+
+
     })

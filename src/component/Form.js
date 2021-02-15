@@ -18,7 +18,6 @@ const Form = ({searchMovieTitle, sortMovies, handleClick}) => {
 
     return (
         <form className='querying-form'>
-            <div className='search-wrapper'>
                 <input 
                     type='text' 
                     placeholder='Search Movies <press Enter>' 
@@ -29,7 +28,6 @@ const Form = ({searchMovieTitle, sortMovies, handleClick}) => {
                     onKeyPress={(event) => filterSearchInput(event, userInput)}
                     >
                 </input>
-            </div>
             <DropdownButton 
                 className='dropdown' 
                 onSelect={sortMovies} 
@@ -37,10 +35,10 @@ const Form = ({searchMovieTitle, sortMovies, handleClick}) => {
                 title="Sort by ↓" 
                 drop="right"
             >
-                <Dropdown.Item eventKey='1'>Highest - Lowest</Dropdown.Item>
-                <Dropdown.Item eventKey='2'>Lowest - Highest</Dropdown.Item>
-                <Dropdown.Item eventKey='3'>A - Z (Title)</Dropdown.Item>
-                <Dropdown.Item eventKey='4'>Z - A (Title)</Dropdown.Item>
+                <Dropdown.Item className='dropdown-option' eventKey='1'>Highest - Lowest</Dropdown.Item>
+                <Dropdown.Item className='dropdown-option' eventKey='2'>Lowest - Highest</Dropdown.Item>
+                <Dropdown.Item className='dropdown-option' eventKey='3'>A - Z (Title)</Dropdown.Item>
+                <Dropdown.Item className='dropdown-option' eventKey='4'>Z - A (Title)</Dropdown.Item>
             </DropdownButton>
             <button onClick={handleClick} className='button-lobby' >Show All Movies</button>
         </form>
