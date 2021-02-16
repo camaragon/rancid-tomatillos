@@ -23,7 +23,7 @@ describe('Main Display', () => {
             statusCode: 404,
             headers: { "access-control-allow-origin": "*"},
             body: {
-                message: "Uh oh... we can\'t find that movie!"
+                message: "Uh oh... we can't find that movie!"
             },
             movies: []
             })

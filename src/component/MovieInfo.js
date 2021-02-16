@@ -3,13 +3,13 @@ import '../scss/index.scss';
 import '../scss/MovieInfo.scss';
 import { Link } from 'react-router-dom';
 import Tomato from '../Tomato.js';
-const moment = require("moment");
+const moment = require('moment');
 
 const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, revenue, runtime, tagline, genres}) => {
     const runTimeConversion = (runtime) => {
       let h = Math.floor(runtime / 60);
       let m = runtime % 60;
-      m = m < 10 ? "0" + m : m;
+      m = m < 10 ? '0' + m : m;
       return `${h}h ${m}`
     }
 
@@ -35,8 +35,8 @@ const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, reve
                   </div>
                 </div>
                 <p className='selected-movie-revenue' style={{display: revenue === 0 ? 'none' : 'block'}}>Revenue: ${revenue.toLocaleString()}</p>
-                <p className='selected-movie-date'>Release Date: {moment(date).format("LL")}</p>
-                <p className='selected-movie-runtime'>Runtime {runTimeConversion(runtime)} min</p>
+                <p className='selected-movie-date'>Release Date: {moment(date).format('LL')}</p>
+                <p className='selected-movie-runtime'>Runtime: {runTimeConversion(runtime)} min</p>
               </div>
             </div>  
             <Link to='/'>

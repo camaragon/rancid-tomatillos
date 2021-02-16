@@ -24,7 +24,7 @@ class App extends Component {
 
   componentDidMount = () => {
     this.setState({isFetching: true})
-    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     .then(response => response.json())
     .then(data => {
       this.setState({movies: data.movies, isFetching: false})
