@@ -19,10 +19,10 @@
 
 .poster-image {
     @include poster-image;
-    // height: 25em;
     width: 75%;
     &:hover {
         border-color: $poster-background;
+        @include full-black-box-shadow-transparent;
     }
 }
 
