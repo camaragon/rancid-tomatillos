@@ -18,7 +18,13 @@ const Movies = ({movies, searchMovieTitle, sortMovies, handleClick, isSorted, di
     
     return (
         <React.Fragment>
-            <Form searchMovieTitle={searchMovieTitle} sortMovies={sortMovies} handleClick={handleClick} isSorted={isSorted} didSearch={didSearch}/>
+            <Form 
+                searchMovieTitle={searchMovieTitle} 
+                sortMovies={sortMovies} 
+                handleClick={handleClick} 
+                isSorted={isSorted} 
+                didSearch={didSearch}
+            />
             <section className='movie-grid'>
                 {moviePosters}
             </section>

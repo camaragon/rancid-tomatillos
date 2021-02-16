@@ -1,9 +1,8 @@
-
 import React, { Component } from 'react';
 import '../scss/index.scss';
 import Movies from './Movies';
 import MovieInfo from './MovieInfo';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { List } from 'react-content-loader';
 import Tomato from '../Tomato';
 
@@ -25,14 +24,13 @@ class App extends Component {
 
   componentDidMount = () => {
     this.setState({isFetching: true})
-
-    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     .then(response => response.json())
     .then(data => {
       this.setState({movies: data.movies, isFetching: false})
     }).catch(error => {
-      this.state.error = true;
-    }).finally({isFetching: false});
+      this.setState({ error: true, isFetching: false})
+    })
   }
 
   selectMovie = (id) => { 
@@ -40,12 +38,10 @@ class App extends Component {
       fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data.movie);
         this.setState({selectedMovie: data.movie, received: true})
-        console.log(this.state.selectedMovie.genres)
       }).catch(error => {
-        this.state.error = true;
-      }).finally({isLoading: false});
+        this.setState({ error: true, isFetching: false})
+      })
     }
   }
 
@@ -77,7 +73,6 @@ class App extends Component {
     }
       const sortedMovies = this.state.movies.sort((a, b) => b.title.localeCompare(a.title));
       return sortedMovies;
-      
   }
 
   render() {
@@ -88,34 +83,56 @@ class App extends Component {
             <Tomato /> RANCID TOMATILLOS <Tomato />
             </h1>
         </header>
-        {/* {this.state.isLoading && this.state.movies.length === 0 && <h2>Movie info is loading...</h2>} */}
-        {/* {this.state.isFetching && <h2 className='loading-text'>The movies are on their way!</h2>} */}
         {this.state.isFetching && <List className='content-loader' />}
         <Route 
           exact 
           path='/' 
           render={ () => {
-          if (this.state.error && this.state.movies.length === 0) {
-            return (<h2 className='error-text'>Uh oh... we can't find the movies!</h2>)
-          }
+          {this.state.error && this.state.movies.length === 0 && <h2 className='error-text'>Uh oh... we can't find the movies!</h2>}
           if (this.state.filteredMovies.length === 0 && !this.state.didSearch && !this.state.isFetching) {
             this.state.received = false;
-            return <Movies movies={this.state.movies} searchMovieTitle={this.searchMovieTitle} sortMovies={this.sortMovies} handleClick={this.handleClick} isSorted={this.state.isSorted} didSearch={this.state.didSearch}/>
+            return (
+              <Movies 
+                movies={this.state.movies} 
+                searchMovieTitle={this.searchMovieTitle} 
+                sortMovies={this.sortMovies} 
+                handleClick={this.handleClick} 
+                isSorted={this.state.isSorted} 
+                didSearch={this.state.didSearch}
+              />)
           } else if (this.state.filteredMovies.length === 0 && this.state.didSearch) {
             return (
               <React.Fragment>
-                <h2>No criteria matched your search!</h2>
-                <button onClick={this.handleClick} className='button-lobby' >Go Back</button>
+                  <h2>No criteria matched your search!</h2>
+                  <button  
+                    onClick={this.handleClick} 
+                    className='button-lobby' 
+                  >Go Back
+                  </button>
               </React.Fragment>
             )
           } else if (this.state.isSorted) {
-            console.log(this.state.movies);
-            return <Movies movies={this.sortMovies} searchMovieTitle={this.searchMovieTitle} sortMovies={this.sortMovies} handleClick={this.handleClick} isSorted={this.state.isSorted} didSearch={this.state.didSearch}/>
+            return (
+              <Movies 
+                movies={this.sortMovies} 
+                searchMovieTitle={this.searchMovieTitle} 
+                sortMovies={this.sortMovies} 
+                handleClick={this.handleClick} 
+                isSorted={this.state.isSorted} 
+                didSearch={this.state.didSearch}
+              />)
           }
           this.state.received = false;
-            return <Movies movies={this.state.filteredMovies} searchMovieTitle={this.searchMovieTitle} sortMovies={this.sortMovies} handleClick={this.handleClick} isSorted={this.state.isSorted} didSearch={this.state.didSearch}/>
+            return (
+              <Movies 
+                movies={this.state.filteredMovies} 
+                searchMovieTitle={this.searchMovieTitle} 
+                sortMovies={this.sortMovies} 
+                handleClick={this.handleClick} 
+                isSorted={this.state.isSorted} 
+                didSearch={this.state.didSearch}
+              />)
           }}
-
         />
         <Route 
           exact 
@@ -127,23 +144,22 @@ class App extends Component {
             }
             this.selectMovie(currentMovie.id);
             return (
-            !this.state.received ? <List /> : <MovieInfo 
-              match={match} 
-              title={this.state.selectedMovie.title}
-              backdrop={this.state.selectedMovie.backdrop_path}
-              poster={this.state.selectedMovie.poster_path}
-              overview={this.state.selectedMovie.overview}
-              rating={this.state.selectedMovie.average_rating}
-              date={this.state.selectedMovie.release_date}
-              revenue={this.state.selectedMovie.revenue}
-              runtime={this.state.selectedMovie.runtime}
-              tagline={this.state.selectedMovie.tagline}
-              genres={this.state.selectedMovie.genres} 
-            />
+              !this.state.received ? <List /> : <MovieInfo 
+                match={match} 
+                title={this.state.selectedMovie.title}
+                backdrop={this.state.selectedMovie.backdrop_path}
+                poster={this.state.selectedMovie.poster_path}
+                overview={this.state.selectedMovie.overview}
+                rating={this.state.selectedMovie.average_rating}
+                date={this.state.selectedMovie.release_date}
+                revenue={this.state.selectedMovie.revenue}
+                runtime={this.state.selectedMovie.runtime}
+                tagline={this.state.selectedMovie.tagline}
+                genres={this.state.selectedMovie.genres} 
+              />
             )
           }} 
         />
-
       </main>
     );
   }

@@ -1,13 +1,16 @@
 describe('Main Display', () => {
     const baseUrl = 'http://localhost:3000';
+    
     it('should be able to visit the base url and see a grid display of movie posters', () => {
         cy
         .visit(baseUrl)
         .location()
     });
+
     beforeEach(() => {
         cy.visit(baseUrl);
     });
+
     it('should display a content loading screen while the posters are loading to inform the user', () => {
         cy
         .get('.content-loader')
@@ -20,7 +23,7 @@ describe('Main Display', () => {
             statusCode: 404,
             headers: { "access-control-allow-origin": "*"},
             body: {
-                message: "Uh oh... we can\'t find that movie!"
+                message: "Uh oh... we can't find that movie!"
             },
             movies: []
             })

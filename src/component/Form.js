@@ -32,9 +32,9 @@ const Form = ({searchMovieTitle, sortMovies, handleClick, isSorted, didSearch}) 
             <DropdownButton 
                 className='dropdown' 
                 onSelect={sortMovies} 
-                id="dropdown-basic-button" 
-                title="Sort by ↓" 
-                drop="right"
+                id='dropdown-basic-button' 
+                title='Sort by ↓' 
+                drop='right'
                 style={{display: didSearch ? 'none' : 'block'}}
             >
                 <Dropdown.Item className='dropdown-option' eventKey='1'>Highest - Lowest</Dropdown.Item>
