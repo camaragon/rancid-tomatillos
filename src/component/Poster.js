@@ -10,7 +10,14 @@ const Poster = ({title, rating, posterImage, id}) => {
               <p className='poster-rating'>{`${rating}`}/10</p>
               <Tomato />
             </div>
-            <Link to={`/${id}`}> <img className='poster-image' id={id} src={posterImage} alt={`Movie poster of ${title}`}></img></Link> 
+            <Link to={`/${id}`}> 
+                <img 
+                    className='poster-image' 
+                    id={id} 
+                    src={posterImage} 
+                    alt={`Movie poster of ${title}`}>
+                </img>
+            </Link> 
             <h2 className='poster-title'>{title}</h2>
         </div>
     )
