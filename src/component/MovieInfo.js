@@ -16,7 +16,11 @@ const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, reve
     return (
         <section className='selected-movie-display' style={{backgroundImage: `url(${backdrop})`}}>
             <div className='movie-info-container'>
-              <img className='selected-movie-poster' src={poster} alt={`Movie poster of ${title}`} ></img>
+              <img 
+                className='selected-movie-poster' 
+                src={poster} 
+                alt={`Movie poster of ${title}`}>
+              </img>
               <div className='movie-info-container-inner'>
                 <div className='selected-movie-header-container'>
                   <h2 className='selected-movie-title'>{title}</h2>
@@ -35,7 +39,12 @@ const MovieInfo = ({match, title, backdrop, poster, overview, rating, date, reve
                 <p className='selected-movie-runtime'>Runtime {runTimeConversion(runtime)} min</p>
               </div>
             </div>  
-            <Link to='/'><button className='button-lobby' >Back to Lobby</button></Link>
+            <Link to='/'>
+              <button 
+                className='button-lobby'
+                >Back to Lobby
+              </button>
+            </Link>
         </section>
     )
 }
