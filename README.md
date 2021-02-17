@@ -38,9 +38,9 @@ A user can search movies by title, sort movies alphabetically, or see movies in 
 
 ## In Action: 
 
-![gif of movie selection](https://media.giphy.com/media/fD4q7NY71CK7eFX3Fb/giphy.gif)
-
 ![Screen Shot of movie](https://user-images.githubusercontent.com/67291333/108140837-cb5d9f00-707f-11eb-8703-359c2b9c52c2.png)
+
+![gif of movie selection](https://media.giphy.com/media/fD4q7NY71CK7eFX3Fb/giphy.gif)
 
 ![gif of ratings](https://media.giphy.com/media/nBzWBWuJ5zpMVbeqiF/giphy.gif)
 
@@ -62,7 +62,7 @@ Then, `run npm start` in terminal.
 
 * Incorporated responsiveness with media queries.
 
-![gif of responsiveness](https://media.giphy.com/media/VLBy3e28sMLd5cg0iW/giphy.gif)
+![gif of responsiveness](https://giphy.com/gifs/VLBy3e28sMLd5cg0iW/html5)
 
 * Gained experience and knowledge with E2E testing using Cypress.
 
