@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Rancid Tomatillos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview 
 
-## Available Scripts
+Inspired by the popular film rating sites, Rancid Tomatillos is a page where users can interact with a display of several movies and view specific information based on the movies chosen. 
+A user can search movies by title, sort movies alphabetically, or see movies in order of their average rating. 
 
-In the project directory, you can run:
+## Contributors 
 
-### `npm start`
+[Cameron Aragon](https://github.com/camaragon) 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[Connie Hong](https://github.com/conconartist)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Project Links:
 
-### `npm test`
+[Deployed Site Page](https://rancid-tomatillos-lake.vercel.app/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Project Spec](https://frontend.turing.io/projects/module-3/rancid-tomatillos-v3.html)
 
-### `npm run build`
+## Learning Goals:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Implement React fundamentals, including React hooks
+* E2E testing asynchronous JavaScript and React components with Cypress
+* Refactor code to implement React Router
+* Create a multipage UX (with React Router)
+* Successfully fetch movie data through Network Requests to display on page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies Used: 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* JavaScript ES6
+* React
+* Cypress
+* React Router
+* ESLint
+* SASS/ SCSS
+* Moment.js
+* Bootstrap
 
-### `npm run eject`
+## In Action: 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![gif of movie selection](https://media.giphy.com/media/fD4q7NY71CK7eFX3Fb/giphy.gif)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![gif of ratings](https://media.giphy.com/media/nBzWBWuJ5zpMVbeqiF/giphy.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![gif of alphabetical movie titles](https://media.giphy.com/media/JstSDHDKdCNMRxb2c9/giphy.gif)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![gif of search feature](https://media.giphy.com/media/S3w19QMVR107Q1PSm8/giphy.gif)
 
-## Learn More
+## Setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Clone down the repo from the GitHub project link to your local machine.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Once you have cloned the repo, change into the directory and `run npm install` in terminal.
 
-### Code Splitting
+Then, `run npm start` in terminal.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Wins
 
-### Analyzing the Bundle Size
+* Achieved 100% score in Lighthouse accessiblity
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* Incorporated responsiveness with media queries.
 
-### Making a Progressive Web App
+* Gained experience and knowledge with E2E testing using Cypress.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* Great teammwork
 
-### Advanced Configuration
+* This was a fun project and we're happy with how it turned out for our first fully functioning project with React.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Future Iterations
 
-### Deployment
+* Expand upon search functionality to include other pieces of data.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Build backend server with Express
