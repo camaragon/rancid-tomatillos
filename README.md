@@ -62,7 +62,7 @@ Then, `run npm start` in terminal.
 
 * Incorporated responsiveness with media queries.
 
-![gif of responsiveness](https://giphy.com/gifs/VLBy3e28sMLd5cg0iW/html5)
+![gif of responsiveness](https://media.giphy.com/media/VLBy3e28sMLd5cg0iW/giphy.gif)
 
 * Gained experience and knowledge with E2E testing using Cypress.
 
