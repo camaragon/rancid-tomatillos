@@ -40,6 +40,8 @@ A user can search movies by title, sort movies alphabetically, or see movies in 
 
 ![gif of movie selection](https://media.giphy.com/media/fD4q7NY71CK7eFX3Fb/giphy.gif)
 
+![Screen Shot of movie](https://user-images.githubusercontent.com/67291333/108140837-cb5d9f00-707f-11eb-8703-359c2b9c52c2.png)
+
 ![gif of ratings](https://media.giphy.com/media/nBzWBWuJ5zpMVbeqiF/giphy.gif)
 
 ![gif of alphabetical movie titles](https://media.giphy.com/media/JstSDHDKdCNMRxb2c9/giphy.gif)
@@ -59,6 +61,8 @@ Then, `run npm start` in terminal.
 * Achieved 100% score in Lighthouse accessiblity
 
 * Incorporated responsiveness with media queries.
+
+![gif of responsiveness](https://media.giphy.com/media/VLBy3e28sMLd5cg0iW/giphy.gif)
 
 * Gained experience and knowledge with E2E testing using Cypress.
 
